@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/TimerSlider/TimerSlider.uss?fileID=7433441132597879392&amp;guid=8fd616c5cc6bc8b4cac91093eb9db594&amp;type=3#TimerSlider" />
+    <ui:VisualElement name="SliderContainer" class="SlideContainer" style="flex-grow: 1; position: absolute; top: 20px; right: -178px; flex-direction: row; transition-property: right; transition-duration: 500ms; transition-timing-function: linear;">
+        <ui:Button text="&lt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SlideBtn" class="SlideBtn" style="position: relative; margin-right: -2px; padding-right: 12px; height: 100%;" />
+        <ui:VisualElement name="LabelCointainer" style="flex-grow: 1; flex-shrink: 0; height: 100%; align-items: center; justify-content: center; background-color: rgb(31, 30, 30); border-left-color: rgb(146, 146, 146); border-right-color: rgb(146, 146, 146); border-top-color: rgb(146, 146, 146); border-bottom-color: rgb(146, 146, 146); border-top-width: 1px; border-bottom-width: 1px;">
+            <ui:Label tabindex="-1" text="Elapsed Time" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="Title">
+                <Bindings>
+                    <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/TimerSliderWindow.asset?fileID=11400000&amp;guid=a7301bc7baeaa0c42ab4900db7f82ea0&amp;type=2#TimerSliderWindow" data-source-path="timerTitleText" />
+                </Bindings>
+            </ui:Label>
+            <ui:Label tabindex="-1" text="00:00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Time" class="Time" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Label text="Show/Hide Elapsed Time" name="TimerTooltip" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; background-color: rgb(30, 72, 119); position: absolute; right: 35px; top: 41px; color: rgb(255, 255, 255); padding-right: 10px; padding-left: 10px; display: none;" />
+</ui:UXML>

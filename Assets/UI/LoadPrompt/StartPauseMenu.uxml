@@ -1,0 +1,24 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/Buttons.uss?fileID=7433441132597879392&amp;guid=da8d6bcf8ef71944f94098137d219d2b&amp;type=3#Buttons" />
+    <engine:VisualElement name="Canvas" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: center; display: flex;">
+        <engine:VisualElement name="StartPauseWindow" style="flex-grow: 0; width: 820px; height: 448px; align-items: stretch; justify-content: flex-start; align-self: auto; flex-direction: column; background-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; display: flex;">
+            <engine:VisualElement name="Header" style="flex-grow: 0; height: 75px; flex-direction: row;">
+                <engine:VisualElement name="BarLeft" style="flex-grow: 0; width: 289px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20600.png?fileID=2800000&amp;guid=177521a1530c24648a5a350c27d5fd29&amp;type=3#Rectangle 600&quot;);">
+                    <engine:Label text="Menu" name="WindowTitle" style="flex-shrink: 1; flex-grow: 1; font-size: 36px; -unity-text-align: middle-left; -unity-font-style: bold; margin-left: 25px; margin-top: 0; margin-right: 0; margin-bottom: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; color: rgb(255, 255, 255);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="BarRight" style="flex-grow: 1; height: 24px; width: 100%; position: absolute; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20601.png?fileID=2800000&amp;guid=af6c34ea3c27b45419f8d11772f94c06&amp;type=3#Rectangle 601&quot;); border-top-left-radius: 20px; border-top-right-radius: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Body" style="flex-grow: 0; height: 250px; flex-direction: row; justify-content: space-between; padding-top: 80px;">
+                <engine:Button text="Continue" name="Continue" select-line-by-triple-click="false" class="BtnPrimary BtnDefault BtnStartMenu" style="width: 250px; height: 150px; align-self: center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 70px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                <engine:Button text="Start from &#10;Beginning" name="Restart" class="BtnSecondary2 BtnDefault BtnStartMenu" style="width: 250px; height: 150px; align-self: center; margin-top: 0; margin-right: 70px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; white-space: normal;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Footer" style="flex-grow: 1; flex-direction: row; align-self: auto;">
+                <engine:VisualElement name="FooterLeft" style="flex-grow: 0; width: 50%;" />
+                <engine:VisualElement name="FooterRight" style="flex-grow: 1; width: 50%; flex-direction: row; align-items: auto; align-self: flex-start; padding-left: 75px;">
+                    <engine:VisualElement name="WarningImage" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/warning-triangle-svgrepo-com.png?fileID=2800000&amp;guid=3caaeefcb3ebdaf41bb386c93032456c&amp;type=3#warning-triangle-svgrepo-com&quot;); -unity-background-image-tint-color: rgb(255, 255, 255); width: 30px; height: 30px; -unity-background-scale-mode: scale-to-fit; margin-bottom: 8px;" />
+                    <engine:Label text="If you start over from the beginning, &#10;your progress will be lost" name="WarningText" style="color: rgb(33, 216, 245); width: 80%; white-space: normal; margin-left: 10px; -unity-text-align: upper-left; font-size: 15px; margin-right: 0;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

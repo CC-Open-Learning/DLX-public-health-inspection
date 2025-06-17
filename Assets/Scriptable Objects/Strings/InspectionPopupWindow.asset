@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bdb34f0d9eeec43b73a737847d8039, type: 3}
+  m_Name: InspectionPopupWindow
+  m_EditorClassIdentifier: 
+  CompliantBtnText: Compliant
+  NonCompliantBtnText: Non-Compliant
+  visualToolBtn: 'Visual
+
+    Inspection'
+  ProbeToolBtn: 'Probe
+
+    Reading'
+  InfraredToolBtn: 'Infrared
+
+    Reading'
+  VisualInfo: Is this visual inspection compliant or non-compliant?
+  ProbeInfo: Does the probe reading meet standards?
+  IRInfo: Does the infrared reading meet standards?
+  CameraInfo: To add the photo to the gallery, report as compliant or non-compliant.
+  CompliantEnding: compliant.
+  NonCompliantEnding: non-compliant.
+  VisualInspection: 'Visual inspection reported as '
+  VisualPhotoInspection: 'Visual inspection with photo reported as '
+  ProbeInspection: 'Probe inspection reported as '
+  IRInspection: 'Infrared inspection reported as '
+  ToastCompliant: Item reported as compliant.
+  ToastNonCompliant: Item reported as non-compliant.
+  ToastPreviousCompliant: You have already reported this as compliant.
+  ToastPreviousNonCompliant: You have already reported this as non-compliant.
+  ToastPhotoAddedToInspection: Photo added to visual inspection.
+  ToastPhotoTaken: Photo taken
+  ToastPhotoAddedToVisual: Photo added to visual inspection
+  CurrentInspectionMesssage: Is this visual inspection compliant or non-compliant?

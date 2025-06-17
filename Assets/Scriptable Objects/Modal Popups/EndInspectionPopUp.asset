@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9485b727edbe26646846364ec48b50b9, type: 3}
+  m_Name: EndInspectionPopUp
+  m_EditorClassIdentifier: 
+  ModalName: End Inspection Confirmation
+  ModalTitle: Confirm End Inspection
+  ContentTitle: Please read before you confirm!
+  Content: 
+  ContentFontSize: 27
+  FooterText: 
+  FooterIcon: {fileID: 0}
+  ConfirmationToggleText: By ending this inspection, I understand that I <color=#FFC009><b>cannot
+    make changes</b></color> in this inspection.
+  SecondaryConfirmationToggleText: By ending this inspection, I understand that if
+    I do not <color=#FFC009><b>download</b></color> the summary in the next section,
+    this inspection will be <color=#FFC009><b>permanently lost</b></color>.
+  ConfirmationToggleFontSize: 24
+  PrimaryBtnText: End Inspection to View Summary
+  SecondaryBtnText: Cancel
+  PrimaryBtnColor: {r: 0, g: 0, b: 0, a: 0}
+  SecondaryBtnColor: {r: 1, g: 1, b: 1, a: 1}
+  PrimaryBtnTxtColor: {r: 0, g: 0, b: 0, a: 0}
+  SecondaryBtnTxtColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+  BtnFontSize: 20
+  PrimaryBtnWidth: 400
+  ModalTitleAlign: 1
+  ContentTitleAlign: 1
+  ContentAlign: 1
+  FooterAlign: 0
+  ConfirmationToggleAlign: 1
+  SecondaryConfirmationToggleAlign: 1
+  IsPrimaryBtnEnabled: 1
+  IsPrimaryBtnClickable: 0
+  IsSecondaryBtnEnabled: 1
+  IsCloseBtnEnabled: 1
+  BaseWindow: 1
+  IsBackgroundDimmed: 1
+  IsConfirmationToggleEnabled: 1
+  IsSecondaryConfirmationToggleEnabled: 1
+  ModalWidth: 1092
+  ModalHeight: 488
+  CustomBtnUSSClasses:
+  - elementName: PrimaryBtn
+    className: BtnPrimary
+  - elementName: SecondaryBtn
+    className: BtnSecondary1

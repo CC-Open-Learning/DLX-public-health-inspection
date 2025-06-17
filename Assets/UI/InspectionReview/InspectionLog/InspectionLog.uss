@@ -1,0 +1,166 @@
+.EditOptions {
+    color: rgb(255, 255, 255);
+    background-color: rgba(188, 188, 188, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-bottom-color: rgb(255, 255, 255);
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-left: 0;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 18px;
+}
+
+#LogContainer .unity-scroller--vertical .unity-base-slider__dragger {
+    height: 100%;
+    width: 10px;
+    align-self: flex-end;
+    background-color: white;
+    border-width: 0;
+    margin-left: 10.5px;
+    padding: 0;
+    border-radius: 3px;
+}
+
+#LogContainer .unity-scroller--vertical .unity-base-slider__tracker {
+    height: 100%;
+    width: 10px;
+    align-self: flex-end;
+    border-width: 0;
+    margin-left: 13.5px;
+    padding: 0;
+    background-color: rgb(128, 128, 128);
+    border-radius: 3px;
+}
+
+#LogContainer .unity-scroller__high-button {
+    display: none;
+}
+
+#LogContainer .unity-scroller__low-button {
+    display: none;
+}
+
+#LogContainer .unity-scroller--vertical .unity-scroller__slider {
+    margin: 0;
+}
+
+.big-button-size {
+    height: 30px;
+    width: 160px;
+}
+
+.sort-btn-left-padding > .unity-text-element {
+    margin-left: 5px;
+}
+
+.header-size-layout {
+    max-width: 100%;
+    width: 100%;
+    height: 49px;
+    flex-direction: row;
+    -unity-text-align: upper-left;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(190, 193, 197);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.active-button {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    -unity-background-image-tint-color: rgb(117, 117, 117);
+}
+
+.inactive-button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(117, 117, 117);
+}
+
+.icon-btn-size {
+    flex-grow: 0;
+    width: 20px;
+    height: 20px;
+    flex-direction: row;
+    align-self: center;
+}
+
+
+.compliant-checkmark-icon {
+    background-image: url("project://database/Assets/Resources/Sprites/CompliantCheckmark.png");
+}
+
+.non-compliant-bg-icon {
+    background-image: url("project://database/Assets/Resources/Sprites/Non-CompliantIcon.png");
+}
+
+.inactive-icon-colour {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.active-icon-colour {
+    -unity-background-image-tint-color: rgb(117, 117, 117);
+}
+
+.active-icon:hover VisualElement#Icon {
+    -unity-background-image-tint-color: rgb(117, 117, 117);
+}
+
+.active-label:hover Label#BtnLabel {
+    color: rgb(0, 0, 0);
+}
+
+.active-container:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.unity-foldout__checkmark {
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.unity-toggle__input > .unity-foldout__checkmark {
+    width: 48px;
+    height: 24px;
+    -unity-background-image-tint-color: white;
+    background-image: url("project://database/Assets/Resources/Sprites/plus-square.png");
+}
+
+.unity-toggle__input:checked > .unity-foldout__checkmark {
+    background-image: url("project://database/Assets/Resources/Sprites/dash-square.png");
+}
+
+#WarningIcon
+{
+    margin-bottom: 56px;
+}
+
+
+#EmptyLogContainer
+{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+#EmptyMessage
+{
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    font-size: 22px; 
+    -unity-font-style: bold;
+    margin-bottom: 32px;
+}
+
+.template-container
+{
+    height: 100%;
+}

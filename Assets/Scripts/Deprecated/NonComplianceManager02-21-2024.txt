@@ -1,0 +1,224 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace VARLab.PublicHealth
+{
+    /// <summary>
+    ///     This is the manager for the non-compliance log. This class contains all the logic for creating the log and adding it to a dictionary. 
+    ///     The dictionary is used to display the logs in the inspection window. The key is the location ID and the value is a list of NonComplianceLogs
+    ///     No duplicate logs are allowed in the list and the list is created if the key does not exist.
+    /// </summary>
+    public class NonComplianceManager : MonoBehaviour
+    {
+        /// <summary><see cref="InspectableManager.UpdateInspectionEvidence(string, string, string)"/></summary>
+        public UnityEvent<string, string, string> UpdateInspectionEvidenceEvent;
+
+        /// <summary><see cref="GalleryBuilder.UpdateGallerySave(string)"/></summary>
+        public UnityEvent<string> DeletePhoto;
+
+        /// <summary><see cref="ProgressBarBuilder.UpdateNonComplianceText"/></summary>
+        public UnityEvent DeleteNonCompliance;
+
+        /// <summary><see cref="SaveDataSupport.SaveNonComplianceLog"/> </summary>
+        public UnityEvent<Dictionary<string,List<NonComplianceLog>>> OnNonComplianceLogChanged;
+
+        /// <summary>
+        ///     Dictionary of NonComplianceLogs. The key is the location ID and the value is a list of NonComplianceLogs
+        /// </summary>
+        public Dictionary<string, List<NonComplianceLog>> NonComplianceLogs;
+
+        public void Awake()
+        {
+            //Create a new dictionary
+            NonComplianceLogs = new();
+        }
+
+        /// <summary>
+        /// <see cref="SaveDataSupport.LoadNonComplianceLog"/>
+        /// </summary>
+        /// <param name="logs"></param>
+        public void OnLoadSetNonCompliances(Dictionary<string,List<NonComplianceLog>> logs)
+        {
+            NonComplianceLogs = logs;
+        }
+
+        /// <summary>
+        ///     Event listener. This is called when an inspection is made. <see cref="InspectionWindow.LogCompliantEvent"/>
+        ///     This method will create a log if the inspection is not compliant based on the tool used and the inspectable object.
+        /// </summary>
+        /// <param name="tools">The tool that was used in the inspection</param>
+        /// <param name="inspectableObject">The object that was inspected</param>
+        public void CreateNonComplianceLog(InspectableObject inspectableObject, Evidence inspectionEvidence)
+        {
+            //If the user selection is compliant then return
+
+            //if (inspectionEvidence.IsCompliant == true)
+            //    return;
+
+            //create a new NonComplianceLog. The photo is set to null by default.
+            NonComplianceLog nonComplianceLog = new()
+            {
+                Item = inspectableObject.InspectableObjectName, 
+                ToolUsed = inspectionEvidence.ToolLabel,
+                Reading = inspectionEvidence.Reading
+            };
+
+           
+            //Add the NonComplianceLog to the dictionary
+            AddLogToDictionary(inspectableObject.Location, nonComplianceLog);
+
+            OnNonComplianceLogChanged?.Invoke(NonComplianceLogs);
+        }
+
+
+        /// <summary>
+        ///     This method will add a non-compliance log to the dictionary.
+        ///     It will ensure that no identical logs are added to the list. 
+        /// </summary>
+        /// <param name="nonComplianceLog">The log to be added to the dictionary</param>
+        /// <param name="locationID">The location of the object where the log is created</param>
+        private void AddLogToDictionary(string locationID, NonComplianceLog nonComplianceLog)
+        {
+            //Check if the item is already in the dictionary and add to the list if the key already exists
+            if (NonComplianceLogs.ContainsKey(locationID))
+            {
+                //Ensure the list has no duplicate items 
+                if (NonComplianceLogs[locationID].Contains(nonComplianceLog))
+                {
+                    //Notify that the log already exists
+                    Debug.Log("NonComplianceLog already exists");
+                    return; 
+                }
+                else
+                {
+                    NonComplianceLogs[locationID].Add(nonComplianceLog);
+                }   
+            }
+            else
+            {
+                //Create a new list if the key does not exist
+                NonComplianceLogs.Add(locationID, new List<NonComplianceLog>());
+                NonComplianceLogs[locationID].Add(nonComplianceLog);
+            }
+        }
+
+        /// <summary>
+        ///     This method will remove a log from the dictionary and decrement the NonComplianceCount
+        ///     This method is called from the <see cref="InspectionWindow"/> when the user clicks the remove button
+        ///     
+        ///     Note: This method is testable in the noncomplianceManagerTests.cs   
+        /// </summary>
+        /// <param name="key">The name of the POI the object is under</param>
+        /// <param name="log">The log we wish to remove</param>
+        public void RemoveLogFromDictionary(string key, NonComplianceLog log)
+        {
+            //using the key, remove the log from the list
+            NonComplianceLogs[key].Remove(log);
+            OnNonComplianceLogChanged?.Invoke(NonComplianceLogs);
+
+            // If location key has no more logs, delete that key
+            if (NonComplianceLogs[key].Count == 0)
+            {
+                NonComplianceLogs.Remove(key);
+            }
+
+            //Event for the progress bar to listen to, so the update can be set. 
+            DeleteNonCompliance?.Invoke();
+            
+            // If the log is a photo, delete the photo from the gallery
+            if (log.ToolUsed == ToolStringsSO.LogPhotoString)
+            {
+                DeletePhoto?.Invoke(log.Item);
+                Debug.Log("Photo deleted");
+            }
+        }
+
+        /// <summary>
+        ///  Helper function to convert log tool to tool enum
+        /// </summary>
+        public string ConvertLogToolToEnum(string logToolUsed)
+        {
+            return logToolUsed switch
+            {
+                ToolStringsSO.LogPhotoString => Tools.Camera.ToString(),
+                ToolStringsSO.LogInfraredString => Tools.IRThermometer.ToString(),
+                ToolStringsSO.LogProbeString => Tools.ProbeThermometer.ToString(),
+                _ => Tools.NoSelection.ToString(),
+            };
+        }
+
+        public void UpdateCameraLog(string toUpdate) {
+            bool found = false;
+            string key = "";
+            NonComplianceLog changedLog = new();
+            NonComplianceLog newLog;
+
+            foreach (var kvp in NonComplianceLogs) {
+                foreach(var log in kvp.Value) {
+                    if(log.Item == toUpdate && log.ToolUsed == ToolStringsSO.LogPhotoString) {
+                        key = kvp.Key;
+                        changedLog = log;
+                        found = true;
+                        break;
+                    }
+                }
+                if(found) {
+                    break;
+                }
+            }
+
+            if (found) { 
+                newLog = changedLog;
+                newLog.Reading = ToolStringsSO.LogPhotoUnavailableString;
+                NonComplianceLogs[key].Remove(changedLog);
+                NonComplianceLogs[key].Add(newLog);
+                //Update the inspection evidence to match non compliance log
+                UpdateInspectionEvidenceEvent?.Invoke(toUpdate, ConvertLogToolToEnum(ToolStringsSO.LogPhotoString), newLog.Reading);
+            }
+        }
+
+
+        /// <summary>
+        ///     This method will iterate over the dictionary and return a true value if a non-compliance log exists for the given name
+        /// </summary>
+        /// <param name="name">Name of the item to search for</param>
+        /// <returns>A NonComplianceLog if it was found, Null if not</returns>
+        public NonComplianceLog? TryToFindNonComplianceLog(string name, string location)
+        {
+            //check if location exists in dictionary and if not return null
+            if (!NonComplianceLogs.ContainsKey(location))
+            {
+                return null;
+            }
+
+            //Iterate over the dictionary and return true if the name exists
+            foreach (var log in NonComplianceLogs[location])
+            {
+                //Currently only checking for the camera tool (Fix non-compliance log bug)
+                if (log.Item == name && log.ToolUsed == ToolStringsSO.LogPhotoString)
+                {
+                    return log;
+                }
+            }
+
+            return null;
+        }
+
+    }
+
+
+
+
+    /// <summary>
+    ///  Struct to hold the data for the NonComplianceLog
+    ///  Note: Nullable is used to allow for the photo to be null
+    /// </summary>
+    public struct NonComplianceLog
+    {
+        public string Item;
+        public string ToolUsed;
+        public string Reading;
+    }
+}

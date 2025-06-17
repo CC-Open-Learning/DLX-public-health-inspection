@@ -1,0 +1,356 @@
+/*
+ * This file is deprecated
+ * Reason: New design on how we will be displaying the gallery and allowing users to remove photo
+ * This file has the implementation of allowing the user to mass delete photos, the new design has single delete. 
+ */
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Linq;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
+using VARLab.PublicHealth;
+
+public class OldGalleryBuilder : MonoBehaviour
+{
+    //Doc references
+    [SerializeField] private ImageManager _imageManager;
+    [SerializeField] private UIDocument _inspectionReviewWindow;
+    [SerializeField] private VisualTreeAsset _mainGallery;
+    [SerializeField] private VisualTreeAsset _galleryRow;
+    [SerializeField] private VisualTreeAsset _galleryPicture;
+
+    [SerializeField] private UIDocument _confirmWindow;
+    [SerializeField] private VisualTreeAsset _confirmTemplate;
+
+    //Button control references
+    private Button _editBtn;
+    private Button _deleteBtn;
+    private Button _cancelBtn;
+
+    //consts for class/element names
+    private const string RowScroll = "ImageScroll";
+    private const string RowLabel = "LocationLbl";
+    private const string TabContent = "TabContent";
+    private const string MainGalleryListName = "GalleryList";
+    private const string SelectPhotoClass = "SelectedPhoto";
+    private const string imgLabel = "ImgNameLbl";
+    private const string checkClass = "Check";
+
+    private TemplateContainer _galleryContainer;
+    private ScrollView _mainGalleryList;
+
+    private Dictionary<string, List<InspectablePhoto>> _locationToPhotos;
+
+    private int _numHighlightedPhotos;
+
+    public UnityEvent<string> DeletePhoto;
+    public UnityEvent SaveGallery;
+
+    public void Awake()
+    {
+        _locationToPhotos = new();
+        HideConfirm();
+    }
+
+    /// <summary>
+    /// This method is for hiding the confirmation window/dialog, it resets the buttons removing the listeners since the window is reused.
+    /// </summary>
+    private void HideConfirm()
+    {
+        _confirmWindow.rootVisualElement.style.display = DisplayStyle.None;
+
+        //remove listeners(unity has no way to clear the listeners and this window is re used)
+        Button closeButton = _confirmWindow.rootVisualElement.Q("CloseBtn") as Button;
+        closeButton.clicked -= HideConfirm;
+        Button cancelButton = _confirmWindow.rootVisualElement.Q("CancelBtn") as Button;
+        cancelButton.clicked -= HideConfirm;
+
+        Button confirmButton = _confirmWindow.rootVisualElement.Q("ConfirmBtn") as Button;
+        confirmButton.clicked -= DeletePhotos;
+        confirmButton.clicked -= HideConfirm;
+    }
+
+    /// <summary>
+    /// This is the "main" method for building the gallery, it acts as the entry point for building the gallery portion of the window.
+    /// </summary>
+    public void BuildGallery()
+    {
+        VisualElement tabWindowElement = _inspectionReviewWindow.rootVisualElement.Q(TabContent);
+        ///maybe in future clear out "Tab Content" here (I think I added this to the tab clicking
+        ///<see cref="InspectionReview"/> has a private class and on "Tab" click clears the content area
+
+        //build main gallery and get reference to ListView
+        _galleryContainer = _mainGallery.Instantiate();
+        _mainGalleryList = _galleryContainer.Q(MainGalleryListName) as ScrollView;
+
+        SetupEditButtons();
+
+        ToggleEditButtonVisibility(_imageManager.Photos.Count);
+
+        BuildAllRows();
+
+        //add container to window element
+        tabWindowElement.Add(_galleryContainer);
+    }
+
+    /// <summary>
+    /// This method re sets up the location to photos dictionary and populates the rows
+    /// </summary>
+    private void BuildAllRows()
+    {
+        PopulateLocationPhotoDict();
+
+        foreach (string location in _locationToPhotos.Keys) //for build
+        {
+            _mainGalleryList.Add(PopulateRow(location));
+        }
+    }
+
+    /// <summary>
+    /// This function Queries the gallery visual tree for the button references to the buttons that are used for deleting/editing the photo list
+    /// and sets up the display and callbacks
+    /// </summary>
+    private void SetupEditButtons()
+    {
+        //reference for main control buttons
+        _editBtn = _galleryContainer.Q("EditBtn") as Button;
+        _deleteBtn = _galleryContainer.Q("DeleteBtn") as Button;
+        _cancelBtn = _galleryContainer.Q("CancelBtn") as Button;
+
+        //hide delete/cancel and setup listener for edit button
+        _deleteBtn.style.display = DisplayStyle.None;
+        _cancelBtn.style.display = DisplayStyle.None;
+        _editBtn.clicked += EditPhotos;
+        _cancelBtn.clicked += CancelEdit;
+        _deleteBtn.clicked += CreateConfirmDelete;
+
+    }
+
+    /// <summary>
+    /// This displays the confirm dialog that will display instead of "creating" one from the document, as there was an issue with window positioning when it was instantiating 
+    /// as a child so it already exists but is displaystyle.none, this displays the window and sets up the buttons
+    /// </summary>
+    public void CreateConfirmDelete()
+    {
+        _confirmWindow.rootVisualElement.style.display = DisplayStyle.Flex;
+        Label textContent = _confirmWindow.rootVisualElement.Q("DialogText") as Label;
+        textContent.text = "Are you sure you want to delete these " + _numHighlightedPhotos + " photos?";
+
+        Label titleContent = _confirmWindow.rootVisualElement.Q("Title") as Label;
+        titleContent.text = "Delete";
+
+        Button closeButton = _confirmWindow.rootVisualElement.Q("CloseBtn") as Button;
+        closeButton.clicked += HideConfirm;
+        Button cancelButton = _confirmWindow.rootVisualElement.Q("CancelBtn") as Button;
+        cancelButton.clicked += HideConfirm;
+
+        Button confirmButton = _confirmWindow.rootVisualElement.Q("ConfirmBtn") as Button;
+        confirmButton.clicked += DeletePhotos;
+        confirmButton.clicked += HideConfirm;
+    }
+
+    /// <summary>
+    /// This method is used to control the display of Buttons and enable the highlighting of photos on click
+    /// </summary>
+    private void EditPhotos()
+    {
+        _editBtn.style.display = DisplayStyle.None;
+        _deleteBtn.style.display = DisplayStyle.Flex;
+        _cancelBtn.style.display = DisplayStyle.Flex;
+
+        EnableHighlighting();
+    }
+
+    /// <summary>
+    /// Enables all displayed photos to be clicked, putting a highlight around it selecting it for deletion
+    /// </summary>
+    private void EnableHighlighting()
+    {
+        List<VisualElement> btns = _galleryContainer.Query("SelectBtn").ToList();
+
+        foreach (VisualElement btn in btns)
+        {
+            btn.visible = true;
+        }
+    }
+
+
+    /// <summary>
+    /// This removes highlighting from all photos in the gallery
+    /// </summary>
+    private void UnselectAllPhotos()
+    {
+        List<VisualElement> btns = _galleryContainer.Query("SelectBtn").ToList();
+
+        foreach (VisualElement btn in btns)
+        {
+            if (btn.ClassListContains(SelectPhotoClass))
+            {
+                ToggleHighlighting(btn as Button);
+            }
+            btn.visible = false;
+        }
+    }
+
+    /// <summary>
+    /// When the user wants to cancel their edit hide buttons and show the edit button again and disbale the ability for the 
+    /// pictures to be highlight toggled.
+    /// </summary>
+    private void CancelEdit()
+    {
+        _editBtn.style.display = DisplayStyle.Flex;
+        _deleteBtn.style.display = DisplayStyle.None;
+        _cancelBtn.style.display = DisplayStyle.None;
+
+        UnselectAllPhotos();
+    }
+
+    /// <summary>
+    /// This method Queries the container for all selected photos, gathers them in a list and deletes them from the image manager
+    /// then clears the UI and rebuilds it
+    /// </summary>
+    /// <param name="photo"> The Photo To Delete </param>
+    private void DeletePhotos()
+    {
+        List<VisualElement> elements = _galleryContainer.Query(className: SelectPhotoClass).ToList();
+
+        if (elements.Count == 0)
+        {
+            return;
+        }
+        //gather ID's of photo to delete and remove from image manager
+        foreach (VisualElement element in elements)
+        {
+            Label name = element.parent.Q(imgLabel) as Label;
+            _imageManager.Photos.Remove(name.text);
+            DeletePhoto?.Invoke(name.text);
+        }
+
+        //clear and rebuild
+        _numHighlightedPhotos = 0;
+        _deleteBtn.text = "Delete(0)";
+        _mainGalleryList.Clear();
+
+        BuildAllRows();
+
+        //toggle buttons back to normal
+        CancelEdit();
+
+        ToggleEditButtonVisibility(_imageManager.Photos.Count);
+
+        //re enable highlight since it rebuilt
+        EnableHighlighting();
+
+        //invoke save
+        SaveGallery?.Invoke();
+    }
+
+
+    /// <summary>
+    /// This function is used to create a "Row" for a location and populate it with all images associated with that location
+    /// </summary>
+    /// <param name="location"> This is the Enum of the location used to index the location->photos dictionary </param>
+    /// <returns> The "row container" that will have the label and a collection of photos, which can be added to the Main gallery element </returns>
+    private TemplateContainer PopulateRow(string location)
+    {
+        TemplateContainer rowContainer = _galleryRow.Instantiate();
+        VisualElement imageRow = rowContainer.Q(RowScroll);
+
+        Label locationName = rowContainer.Q(RowLabel) as Label;
+        locationName.text = _locationToPhotos[location][0].Location.ToString();
+
+        foreach (InspectablePhoto photo in _locationToPhotos[location])
+        {
+            //instantiate img container
+            TemplateContainer img = _galleryPicture.Instantiate();
+
+            //setup highlight on click
+            VisualElement check = img.Q("Check");
+            Button highlighting = img.Q<Button>();
+            highlighting.visible = false;
+            highlighting.clicked += () => ToggleHighlighting(highlighting);
+
+            //take photo and load texture top background of element
+            Texture2D tex = new Texture2D(ImageManager.ResWidth, ImageManager.ResHeight);
+            tex.LoadImage(photo.Data);
+            img.Q("Picture").style.backgroundImage = tex;
+
+            //setup name/timestamp
+            Label name = img.Q(imgLabel) as Label;
+            name.text = photo.Id;
+            //TO DO ADD TIMESTAMP(see the img uidoc for the element name)
+            Label time = img.Q<Label>("TimeStampLbl");
+            time.text = photo.TimeStamp;
+
+            imageRow.Add(img);
+        }
+
+        return rowContainer;
+    }
+
+    /// <summary>
+    /// This iterates over the ImageManagers Photo list and creates a dictionary of locations with the associated list of photos for that location.
+    /// </summary>
+    private void PopulateLocationPhotoDict()
+    {
+        _locationToPhotos.Clear();
+        //get a dictionary of the locations -> list of photos
+        foreach (KeyValuePair<string, InspectablePhoto> kvp in _imageManager.Photos)
+        {
+            if (_locationToPhotos.ContainsKey(kvp.Value.Location))
+            {
+                _locationToPhotos[kvp.Value.Location].Add(kvp.Value);
+            }
+            else
+            {
+                _locationToPhotos.Add(kvp.Value.Location, new List<InspectablePhoto>() { kvp.Value });
+            }
+        }
+    }
+
+    /// <summary>
+    /// This method toggles the highlighting for an individual picture
+    /// </summary>
+    /// <param name="btn"> the highlighting element </param>
+    /// <param name="deleteBtn"> the delete button to change text </param>
+    private void ToggleHighlighting(Button btn)
+    {
+        VisualElement check = btn.parent.Q("Check");
+        if (btn.ClassListContains(SelectPhotoClass))
+        {
+            //this block means photo is selected
+            _numHighlightedPhotos--;
+            _deleteBtn.text = "Delete(" + _numHighlightedPhotos + ")";
+            btn.RemoveFromClassList(SelectPhotoClass);
+            check.RemoveFromClassList(checkClass);
+        }
+        else
+        {
+            //this block means photo is unselected
+            _numHighlightedPhotos++;
+            _deleteBtn.text = "Delete(" + _numHighlightedPhotos + ")";
+            btn.AddToClassList(SelectPhotoClass);
+            check.AddToClassList(checkClass);
+        }
+    }
+
+    /// <summary>
+    /// This method toggles the visibility of the edit button based on the number of items in the gallery
+    /// </summary>
+    /// <param name="itemCount"> The number of items in the gallery </param>
+    private void ToggleEditButtonVisibility(int itemCount)
+    {
+        //disable edit button when the gallery is empty
+        if (itemCount == 0)
+        {
+            _editBtn.style.display = DisplayStyle.None;
+        }
+        else
+        {
+            _editBtn.style.display = DisplayStyle.Flex;
+        }
+    }
+}

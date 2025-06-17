@@ -1,0 +1,500 @@
+/*
+ * 2024-01-26:
+ * This file contains the workflow for batch deletion of non-compliant logs.
+ * That functionality was determined incorrect during W24-2, and removed with PHI-405
+
+using System.Collections.Generic;
+using System;
+using System.Linq;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.Events;
+
+namespace VARLab.PublicHealth
+{
+    /// <summary>
+    ///     This class is responsible for building the noncompliance tab in the inspection review window. 
+    ///     Using the NonComplianceManager, this class will read the information from the manager and build the UI
+    ///     based on the values within the managers log dictionary. 
+    /// </summary>
+    public class NonComplianceBuilder : MonoBehaviour
+    {
+        //constants for class/element names
+        private const string MainNonComplianceListName = "LogContainer";
+        private const string TabContent = "TabContent";
+
+        //references to manager
+        [SerializeField] private NonComplianceManager _nonComplianceManager;
+
+        //doc references
+        [SerializeField] private UIDocument _inspectionReviewWindow;
+        [SerializeField] private VisualTreeAsset _mainNonCompliance;
+        [SerializeField] private VisualTreeAsset _nonComplianceLogRow;
+        [SerializeField] private VisualTreeAsset _foldout;
+
+        [SerializeField] private UIDocument _confirmWindow;
+
+        //images for the background of the noncompliance log
+        [SerializeField] private Texture2D _photo;
+        [SerializeField] private Texture2D _visual;
+        [SerializeField] private Texture2D _IRThermometer;
+        [SerializeField] private Texture2D _probeThermometer;
+        [SerializeField] private Texture2D _deleteIcon;
+
+        //Button control references
+        private Button _editBtn;
+        private Button _deleteBtn;
+        private Button _cancelBtn;
+
+        //delete count that the user has selected 
+        private int _deleteCount = 0;
+
+        //container references
+        private TemplateContainer _nonComplianceContainer;
+        private ScrollView _mainNonComplianceList;
+
+        //untiy event 
+        public UnityEvent DeleteNonCompliance;
+
+        /// <summary> 
+        ///     Builds the non-compliance tab in the inspection review window
+        /// </summary>
+        public void BuildNonCompliance()
+        {
+            //Get the tab window element from the inspection review window 
+            VisualElement tabWindowElement = _inspectionReviewWindow.rootVisualElement.Q(TabContent);
+
+            //Instantiate the main noncompliance container from the visual tree asset
+            _nonComplianceContainer = _mainNonCompliance.Instantiate();
+
+            //get the main noncompliance list from the container
+            _mainNonComplianceList = _nonComplianceContainer.Q(MainNonComplianceListName) as ScrollView;
+
+            //Setup the edit buttons
+            SetupEditButtons();
+
+            //Toggle the edit button if the list is empty
+            ToggleEditButtonVisibility(_nonComplianceManager.NonComplianceLogs.Count);
+
+
+            //Build all the logs in rows for the UI
+            BuildAllRows();
+
+            //Add the main activity log to the tab window
+            tabWindowElement.Add(_nonComplianceContainer);
+        }
+
+        /// <summary>
+        ///     This method will build all the logs from the noncompliance manager using the dictionary
+        ///     Uses foldouts to organize the logs by the name of the POI 
+        ///     Uses custom rows to display the information of the noncompliance log inside of the foldouts
+        ///     - Foldout (POI) 
+        ///     -- Row (Noncompliance log)
+        /// </summary>
+        private void BuildAllRows()
+        {
+            //Iterate over the noncompliance logs keys           
+            foreach (var nonComplianceLog in _nonComplianceManager.NonComplianceLogs)
+            {
+                //Instantiate a new container from the visual tree asset
+                TemplateContainer container = _foldout.Instantiate();
+
+                //Get the foldout element in the container 
+                Foldout foldout = container.Q<Foldout>("Foldout");
+
+                //Set the text of the foldout to the name of the POI
+                foldout.text = nonComplianceLog.Key;
+
+                //Style the foldout (Subject to change)
+                foldout.style.fontSize = 30;
+                foldout.style.color = Color.white;
+
+                //Iterate over the list of noncompliance logs within the key value and add them to the foldout
+                foreach (var log in nonComplianceLog.Value)
+                {
+                    foldout.Add(PopulateRow(log));
+                }
+
+                //Add a callback to the toggle to select all the logs in the foldout
+                //When this toggle is selected, all the logs in the foldout will be selected
+                Toggle toggle = container.Q<Toggle>("FoldoutToggle");
+                toggle.RegisterValueChangedCallback((evt) =>
+                {
+                    //Get all the buttons in the foldout and set their value to the value of the toggle
+                    List<VisualElement> btns = foldout.Query("SelectBtn").ToList();
+                    foreach (Toggle btn in btns)
+                    {
+                        btn.value = evt.newValue;
+                    }
+
+                });
+
+                //Add the foldout to the main list
+                _mainNonComplianceList.Add(container);
+            }
+        }
+
+
+        /// <summary>
+        ///    This method will populate a row in the noncompliance log
+        /// </summary>
+        /// <param name="nonComplianceLog">The non compliance log information the row will build off of</param>
+        /// <returns>The completed UI for the log is returned as a visual element</returns>
+        private VisualElement PopulateRow(NonComplianceLog nonComplianceLog)
+        {
+            //Instantiate the row and get the row element
+            TemplateContainer container = _nonComplianceLogRow.Instantiate();
+            VisualElement row = container.Q("NonCompRow");
+
+            //populate the row with the noncompliance log data
+            Label item = row.Q<Label>("Item");
+            item.text = nonComplianceLog.Item;
+
+            //styling
+            item.style.fontSize = 20;
+            item.style.color = Color.white;
+
+            //get the tool used container and the photo element
+            VisualElement toolUsedContainer = row.Q<VisualElement>("ToolContainer");
+            VisualElement photo = toolUsedContainer.Q<VisualElement>("Photo");
+
+            //set the image of the background based on the type of inspection
+            if (nonComplianceLog.ToolUsed == "Photo")
+                photo.style.backgroundImage = _photo;
+
+            else if (nonComplianceLog.ToolUsed == "Infrared")
+                photo.style.backgroundImage = _IRThermometer;
+
+            else if (nonComplianceLog.ToolUsed == "Probe")
+                photo.style.backgroundImage = _probeThermometer;
+
+            else
+                photo.style.backgroundImage = _visual;
+
+            //Added a callback to the toggle to change the increment the delete value 
+            Toggle selectBtn = row.Q<Toggle>("SelectBtn");
+            selectBtn.RegisterValueChangedCallback((evt) =>
+            {
+                if (evt.newValue == true)
+                {
+                    //increment the delete count and update the text
+                    _deleteBtn.text = $"Delete ({++_deleteCount})";
+                }
+                else
+                {
+                    //decrement the delete count and update the text
+                    _deleteBtn.text = $"Delete ({--_deleteCount})";
+                }
+            });
+
+            //populate the row with the tool used
+            Label toolUsed = toolUsedContainer.Q<Label>("ToolUsed");
+            toolUsed.text = nonComplianceLog.ToolUsed;
+
+            //styling
+            toolUsed.style.fontSize = 20;
+            toolUsed.style.color = Color.white;
+
+            //populate the row with the reading
+            Label reading = row.Q<Label>("Reading");
+            reading.text = nonComplianceLog.Reading;
+
+            //styling
+            reading.style.fontSize = 20;
+            reading.style.color = Color.white;
+
+            //display the delete icon
+            Button deleteButton = row.Q<Button>("DeleteButton");
+            deleteButton.style.backgroundImage = _deleteIcon;
+
+            // Register it with the delete confirmation dialog
+            string deleteDialogText = "Are you sure you want to delete the inspection?";
+            if(nonComplianceLog.ToolUsed == "Photo") {
+                deleteDialogText = "Deleting the inspection will also remove the photo from the gallery." +
+                    " Are you sure you want to delete the inspection?";
+            }
+            deleteButton.clicked += () => CreateConfirmationDialog(deleteDialogText, () => DeleteLog(row));
+
+            return container;
+        }
+
+        /// <summary>
+        ///     This method will create and customize a confirmation dialog
+        ///     window. Has confirm, cancel, and exit buttons to progress workflow
+        /// </summary>
+        /// <param name="dialogText"> The text to display in the dialog</param>
+        /// <param name="onConfirm"> The Action to perform if confirm is selected</param>
+        private void CreateConfirmationDialog(string dialogText, Action onConfirm) {
+            _confirmWindow.rootVisualElement.style.display = DisplayStyle.Flex;
+            
+            // Set the dialog text
+            Label textContent = _confirmWindow.rootVisualElement.Q("DialogText") as Label;
+            textContent.text = dialogText;
+            textContent.style.unityTextAlign = TextAnchor.UpperLeft;
+
+            Label titleContent = _confirmWindow.rootVisualElement.Q("Title") as Label;
+            titleContent.text = "Delete";
+
+            // Register actions to button clicks
+            Button closeButton = _confirmWindow.rootVisualElement.Q<Button>("CloseBtn");
+            closeButton.clicked += () => CloseConfirmationDialog(onConfirm);
+            Button cancelButton = _confirmWindow.rootVisualElement.Q<Button>("CancelBtn");
+            cancelButton.clicked += () => CloseConfirmationDialog(onConfirm);
+
+            Button confirmButton = _confirmWindow.rootVisualElement.Q("ConfirmBtn") as Button;
+            confirmButton.clicked += onConfirm;
+            confirmButton.clicked += () => CloseConfirmationDialog(onConfirm);
+        }
+
+        /// <summary>
+        ///     This method will close a confirmation dialog. Un-registers all Actions and
+        ///     hides the window.
+        /// </summary>
+        /// <param name="onConfirm">The action to unregister from confirmButton.clicked</param>
+        private void CloseConfirmationDialog(Action onConfirm) {
+            _confirmWindow.rootVisualElement.style.display = DisplayStyle.None;
+
+            //remove listeners(unity has no way to clear the listeners and this window is re used)
+            Button closeButton = _confirmWindow.rootVisualElement.Q("CloseBtn") as Button;
+            closeButton.clicked -= () => CloseConfirmationDialog(onConfirm);
+            Button cancelButton = _confirmWindow.rootVisualElement.Q("CancelBtn") as Button;
+            cancelButton.clicked -= () => CloseConfirmationDialog(onConfirm);
+
+            Button confirmButton = _confirmWindow.rootVisualElement.Q("ConfirmBtn") as Button;
+            confirmButton.clicked -= onConfirm;
+            confirmButton.clicked -= () => CloseConfirmationDialog(onConfirm);
+        }
+
+        /// <summary>
+        ///     This method starts the process of deleting a non-compliance log. Extracts
+        ///     the key & log data from the UI, then sends to the manager for deletion.
+        /// </summary>
+        /// <param name="toDelete"></param>
+        private void DeleteLog(VisualElement toDelete) {
+            // Get the location key
+            Foldout locationFoldout = toDelete.parent.parent.Q<Foldout>("Foldout");
+            string locationText = locationFoldout.text;
+
+            // Construct the non-compliance log
+            Label item = toDelete.Q<Label>("Item");
+            Label toolUsed = toDelete.Q<Label>("ToolUsed");
+            Label reading = toDelete.Q<Label>("Reading");
+
+            NonComplianceLog log = new NonComplianceLog();
+            log.Item = item.text;
+            log.ToolUsed = toolUsed.text;
+            log.Reading = reading.text;
+            
+            // Delete & reset the container
+            _nonComplianceManager.RemoveLogFromDictionary(locationText, log);
+            _mainNonComplianceList.Clear();
+            BuildAllRows();
+        }
+
+
+        /// <summary>
+        ///     This method contain the functionality to cancel the edit
+        ///     It will uncheck all the checkboxes and hide the delete/cancel buttons
+        /// </summary>
+        private void CancelEdit()
+        {
+            //uncheck all the checkboxes in the list of noncompliance logs
+            List<VisualElement> btns = _nonComplianceContainer.Query("SelectBtn").ToList();
+            List<VisualElement> parentBtns = _nonComplianceContainer.Query("FoldoutToggle").ToList();
+
+            //iterate over the list of buttons in the log rows and uncheck them
+            foreach (Toggle btn in btns)
+            {
+                btn.value = false;
+            }
+
+            //iterate over the list of foldout toggles and uncheck them
+            foreach (Toggle btn in parentBtns)
+            {
+                btn.value = false;
+            }
+
+            //Update the display of the buttons 
+            _editBtn.style.display = DisplayStyle.Flex;
+            _deleteBtn.style.display = DisplayStyle.None;
+            _cancelBtn.style.display = DisplayStyle.None;
+
+            ToggleButtonVisibility();
+        }
+
+
+        /// summary>
+        ///     This method will delete the selected logs from the manager and rebuilding the UI
+        /// </summary>
+        private void DeleteLogs()
+        {
+            //get a list of all the selected logs
+            List<VisualElement> selectedLogs = new List<VisualElement>();
+
+            //delete the selected logs
+            List<VisualElement> btns = _nonComplianceContainer.Query("SelectBtn").ToList();
+
+            //check if there are any logs selected
+            if (btns.Count == 0)
+                return;
+
+            //iterate over the list of buttons and get the selected logs
+            foreach (Toggle btn in btns)
+            {
+                if (btn.value == true)
+                {
+                    selectedLogs.Add(btn.parent);
+                }
+            }
+
+            //Iterate over the selected logs and remove the logs from the manager 
+            foreach (VisualElement log in selectedLogs)
+            {
+                //get the name of the log
+                string logName = log.Q<Label>("Item").text;
+                string logToolUsed = log.Q<Label>("ToolUsed").text;
+
+                //Note: future refactoring can be done here to make this more efficient
+                //  Noncompliance manager could contain a method for taking in log data and removing it from the manager
+
+                //iterate over the noncompliance logs and remove the log (this is going over the keys)
+                foreach (var nonComplianceLog in _nonComplianceManager.NonComplianceLogs)
+                {
+                    //iterate over the list of noncompliance logs (this is going over the list of values)
+                    foreach (var logItem in nonComplianceLog.Value)
+                    {
+                        //if the log name matches the log item
+                        if ((logItem.Item == logName) && (logItem.ToolUsed == logToolUsed))
+                        {
+                            //remove the log from the list
+                            //nonComplianceLog.Value.Remove(logItem);
+                            _nonComplianceManager.RemoveLogFromDictionary(nonComplianceLog.Key, logItem);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //iterate over the noncompliance logs and remove the key value pairs that have an empty list
+            for (int i = 0; i < _nonComplianceManager.NonComplianceLogs.Count; i++)
+            {   
+                //if the list is empty, remove the key value pair
+                if (_nonComplianceManager.NonComplianceLogs.ElementAt(i).Value.Count == 0)
+                { 
+                    //remove the key value pair
+                    _nonComplianceManager.NonComplianceLogs.Remove(_nonComplianceManager.NonComplianceLogs.ElementAt(i).Key);
+
+                    //since the list has been modified, decrement the index
+                    i--;
+                }
+            }
+
+            //clear and rebuild the list
+            _mainNonComplianceList.Clear();
+            _deleteCount = 0;
+            _deleteBtn.text = $"Delete ({_deleteCount})";
+
+            //update the display of the buttons
+            _editBtn.style.display = DisplayStyle.Flex;
+            _deleteBtn.style.display = DisplayStyle.None;
+            _cancelBtn.style.display = DisplayStyle.None;
+
+            //Event for the progress bar to listen to, so the update can be set. 
+            DeleteNonCompliance?.Invoke();
+
+            ToggleButtonVisibility();
+            ToggleEditButtonVisibility(_nonComplianceManager.NonComplianceLogs.Count);
+            BuildAllRows();
+        }
+
+
+        /// <summary>
+        ///     This method will setup the edit buttons and hide the delete/cancel buttons
+        ///     Also sets up the listeners for the edit buttons
+        /// </summary>
+        private void SetupEditButtons()
+        {
+            //reference for main control buttons
+            _editBtn = _nonComplianceContainer.Q("EditBtn") as Button;
+            _deleteBtn = _nonComplianceContainer.Q("DeleteBtn") as Button;
+            _cancelBtn = _nonComplianceContainer.Q("CancelBtn") as Button;
+
+            //hide delete/cancel and setup listener for edit button
+            _deleteBtn.style.display = DisplayStyle.None;
+            _cancelBtn.style.display = DisplayStyle.None;
+
+            _editBtn.clicked += EditLogs;
+            _cancelBtn.clicked += CancelEdit;
+            _deleteBtn.clicked += DeleteLogs;
+        }
+
+
+        /// <summary>
+        ///     This a changing the style of the buttons and toggling the visibility of the checkboxes. 
+        /// </summary>
+        private void EditLogs()
+        {
+            _editBtn.style.display = DisplayStyle.None;
+            _deleteBtn.style.display = DisplayStyle.Flex;
+            _cancelBtn.style.display = DisplayStyle.Flex;
+            ToggleButtonVisibility();
+        }
+
+
+        /// <summary>
+        ///     Toggles the visibility of the checkboxes and the foldout toggles
+        /// </summary>
+        private void ToggleButtonVisibility()
+        {
+            //toggle the toggle buttons from visible if they're not already and vice versa
+            List<VisualElement> btns = _nonComplianceContainer.Query("SelectBtn").ToList();
+            List<VisualElement> foldoutBtns = _nonComplianceContainer.Query("FoldoutToggle").ToList();
+
+            //toggle the visibility of the buttons
+            foreach (VisualElement btn in btns)
+            {
+                if (btn.visible == true)
+                {
+                    btn.visible = false;
+                }
+                else
+                {
+                    btn.visible = true;
+                }
+
+            }
+
+            //toggle the visibility of the foldout toggles
+            foreach (VisualElement btn in foldoutBtns)
+            {
+                if (btn.visible == true)
+                {
+                    btn.visible = false;
+                }
+                else
+                {
+                    btn.visible = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// This method will toggle the edit button visibility based on the number of items in the list
+        /// </summary>
+        /// <param name="itemCount">The number of items in the list</param> 
+        private void ToggleEditButtonVisibility(int itemCount)
+        {
+            //toggle the edit button visibility if the list is empty
+            if (itemCount == 0)
+            {
+                _editBtn.style.display = DisplayStyle.None;
+            }
+            else
+            {
+                _editBtn.style.display = DisplayStyle.Flex;
+            }
+        }
+    }
+}
+*/

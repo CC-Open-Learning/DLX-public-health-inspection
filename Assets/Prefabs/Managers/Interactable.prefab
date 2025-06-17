@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8951657947503026674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8711412036108431822}
+  - component: {fileID: 2969585037960103678}
+  m_Layer: 0
+  m_Name: Interactable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8711412036108431822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951657947503026674}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -24.906466, y: -9.703247, z: -0.07072067}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2969585037960103678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951657947503026674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a83a4c99f2e74549ad97351f6b7098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 0}
+  OnTurnOnUI:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnOffUI:
+    m_PersistentCalls:
+      m_Calls: []
+  SetPanAndZoomAbility:
+    m_PersistentCalls:
+      m_Calls: []
+  ResetSim:
+    m_PersistentCalls:
+      m_Calls: []
+  ShowModalPopup:
+    m_PersistentCalls:
+      m_Calls: []
+  CanInteract: 0
+  ReviewWindow: {fileID: 0}
+  TimerUI: {fileID: 0}
+  Pause: {fileID: 0}
+  PoiManager: {fileID: 0}
+  CMCamera: {fileID: 0}
+  _restartSO: {fileID: 11400000, guid: 1142e8e430800294c9fe9e3edc6bf7ab, type: 2}
+  _handwashFailSO: {fileID: 11400000, guid: 3390cc3c6c54bc247b456ac6345adc98, type: 2}

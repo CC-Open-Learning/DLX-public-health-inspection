@@ -1,0 +1,112 @@
+.TabBtnUnselected {
+    color: rgb(250, 250, 250);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    font-size: 22px;
+}
+
+.TabBtnSelected {
+    color: rgba(255, 192, 9, 0.8);
+    border-bottom-color: rgb(236, 193, 6);
+    border-bottom-width: 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.SubmitBtn {
+    height: 62px;
+    width: 300px;
+    font-size: 28px;
+}
+
+.ProgressGroup {
+    flex-grow: 1;
+    margin-top: 75px;
+    padding-top: 0;
+    margin-left: 40px;
+    margin-bottom: 75px;
+}
+
+.MyProgressData {
+    border-bottom-width: 1px;
+    border-left-color: rgb(151, 151, 151);
+    border-right-color: rgb(151, 151, 151);
+    border-top-color: rgb(151, 151, 151);
+    border-bottom-color: rgb(151, 151, 151);
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    padding-bottom: 10px;
+    -unity-font-style: bold;
+}
+
+.MyProgressLabel {
+    height: auto;
+    width: auto;
+    color: rgb(220, 220, 220);
+    font-size: 25px;
+    flex-wrap: wrap;
+    max-height: none;
+}
+
+.ProgressGroupItem {
+    flex-grow: 0;
+    height: auto;
+    max-height: none;
+}
+
+.pausebtn {
+    width: 60px;
+    height: 60px;
+    margin-top: 2px;
+    margin-right: 4px;
+    margin-bottom: 2px;
+    margin-left: 4px;
+    background-image: url("project://database/Assets/Art/Sprites/UI/Icons/pause.png?fileID=2800000&guid=9ffb0c4cc4ec8d0479dd6d387dc6e823&type=3#pause");
+}
+
+#ConfirmToggle .unity-base-field__input {
+    overflow: visible;
+}
+
+#ConfirmToggle .unity-toggle__checkmark {
+    -unity-background-image-tint-color: rgb(12, 2, 194);
+}
+
+#ConfirmationToggle .unity-toggle__checkmark,
+#SecondaryConfirmationToggle .unity-toggle__checkmark {
+    align-self: top;
+    margin-top: 7px;
+}
+
+#ConfirmationToggle .unity-toggle__text, 
+#SecondaryConfirmationToggle .unity-toggle__text {
+    white-space: normal; 
+    word-wrap: break-word;
+    margin-left: 10px;
+    width: 95%;
+}
+
+#ConfirmationToggle,
+#SecondaryConfirmationToggle {
+    margin-top: 30px;
+    margin-left: 12px;
+}
+
+#Content {
+    margin-top: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.CloseBtn {
+    border-top-left-radius: 59px;
+    border-bottom-left-radius: 59px;
+    border-top-right-radius: 59px;
+    border-bottom-right-radius: 59px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}

@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/USS/RadialProgress.uss?fileID=7433441132597879392&amp;guid=1ea11ac9fb368ab4b860bd9c5a09d772&amp;type=3#RadialProgress" />
+    <Style src="project://database/Assets/UI/Dialogs/Toast.uss?fileID=7433441132597879392&amp;guid=5c484bbc4a844dc4dae325f32a85feee&amp;type=3#Toast" />
+    <Style src="project://database/Assets/Resources/USS/Fade.uss?fileID=7433441132597879392&amp;guid=e57d46aca75ba1d4f888528720564952&amp;type=3#Fade" />
+    <engine:VisualElement name="Background" style="flex-grow: 1; background-image: none; background-color: rgb(0, 0, 0);">
+        <engine:VisualElement name="Container" style="flex-grow: 1; justify-content: center; align-self: center;">
+            <VARLab.PublicHealth.RadialProgress name="RadialLoadingBar" style="align-self: center;" />
+            <engine:Label name="LoadingText" text="Loading..." style="align-self: center; font-size: 64px; color: rgb(255, 255, 255); margin-top: 10px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

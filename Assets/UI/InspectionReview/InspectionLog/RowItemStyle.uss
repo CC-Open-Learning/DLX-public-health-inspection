@@ -1,0 +1,48 @@
+.EmptyIcon {
+    visibility: hidden;
+}
+
+.VisibleIcon {
+    visibility: visible;
+    margin-right: 5px;
+}
+
+.TextButton {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    border-width: 0;
+}
+
+.TextButton:enabled {
+    color: rgb(5, 141, 241);
+}
+
+.TextButton:disabled {
+    color: white;
+    opacity: 100;
+}
+
+.TextButton:enabled:hover {
+    border-bottom-color: rgb(5, 141, 241);
+    border-bottom-width: 2px;
+}
+
+.MissingPhoto {
+    color: rgb(157, 157, 157);
+    opacity: 50;
+}
+
+.DefaultText {
+    color: white;
+    font-size: 18px;
+}
+
+.inspection-image {
+    flex-grow: 1;
+    width: 28px;
+    height: 28px;
+    margin-left: 30px;
+    -unity-background-scale-mode: scale-to-fit;
+}

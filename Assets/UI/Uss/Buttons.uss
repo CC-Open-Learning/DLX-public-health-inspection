@@ -1,0 +1,81 @@
+.BtnDefault {
+    border-radius: 10px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.BtnPrimary {
+    background-color: rgb(255, 192, 9);
+    border-color: rgb(255, 192, 9);
+    border-width: 4px;
+    color: rgb(0, 0, 0);
+}
+
+.BtnSecondary1 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-width: 4px;
+    border-color: rgb(255, 255, 255);
+}
+
+.BtnSecondary2 {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 192, 9);
+    border-width: 2px;
+    border-color: rgb(255, 192, 9);
+}
+
+.BtnNegative {
+    background-color: rgb(237, 94, 104);
+    border-color: rgb(237, 94, 104);
+    border-width: 4px;
+    color: rgb(255, 255, 255);
+}
+
+.BtnNegative2 {
+    background-color: rgb(0, 0, 0);
+    color: rgb(237, 94, 104);
+    border-width: 2px;
+    border-color: rgb(237, 94, 104);
+}
+
+.BtnPrimary:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.BtnNegative:hover {
+    border-color: rgb(255, 255, 255);
+}
+
+.BtnPrimary:disabled {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 204, 51);
+    opacity:0.6;
+}
+
+.BtnSecondary2:disabled {
+    border-color: rgb(161, 161, 161);
+    color: rgb(161, 161, 161);
+}
+
+.BtnSecondary2:hover {
+    background-color: rgb(104, 83, 18);
+}
+
+.BtnNegative2:hover {
+    background-color: rgb(109, 56, 61);
+}
+
+.BtnSecondary1:hover {
+    background-color: rgb(161, 161, 161);
+    border-color: rgb(255, 255, 255);
+    border-width: 4px;
+}
+
+.BtnStartMenu {
+    width: 422px;
+    height: 48px;
+    font-size: 28px;
+    unity-font-style: bold;
+    margin-top: 40px;
+}

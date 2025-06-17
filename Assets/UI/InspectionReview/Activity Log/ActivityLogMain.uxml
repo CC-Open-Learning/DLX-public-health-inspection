@@ -1,0 +1,44 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/InspectionReview/Activity%20Log/ActivityLogMain.uss?fileID=7433441132597879392&amp;guid=dc9d53265ee374b3294fc0b12d5c9931&amp;type=3#ActivityLogMain" />
+    <Style src="project://database/Assets/UI/InspectionReview/Gallery/GalleryMain.uss?fileID=7433441132597879392&amp;guid=45d5de490bd766f4a893088a375d3659&amp;type=3#GalleryMain" />
+    <Style src="project://database/Assets/UI/InspectionReview/InspectionReviewMain.uss?fileID=7433441132597879392&amp;guid=83af21322bf9fec49992e34cc29f9381&amp;type=3#InspectionReviewMain" />
+    <ui:VisualElement name="MainContainer" style="flex-grow: 1;">
+        <ui:VisualElement name="EmptyLogContainer" style="flex-grow: 1; display: none;">
+            <ui:VisualElement name="SadFaceIcon" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/SadFace.png?fileID=2800000&amp;guid=2c5bbfa3fe15dcb469d3fb241f94bd4c&amp;type=3#SadFace&quot;); max-height: 190px; max-width: 190px;" />
+            <ui:VisualElement name="EmptyMessageContainer" data-source="project://database/Assets/Scriptable%20Objects/Strings/ActivityLogTabWindow.asset?fileID=11400000&amp;guid=707a459607281b048a83f30ca1d99ccd&amp;type=2#ActivityLogTabWindow" style="flex-grow: 1; height: 50px; max-height: 50px;">
+                <ui:Label text="Label" name="EmptyMessageHeader">
+                    <Bindings>
+                        <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="emptyMessageHeader" />
+                    </Bindings>
+                </ui:Label>
+                <ui:Label text="Label" name="EmptyMessage" style="-unity-font-style: normal;">
+                    <Bindings>
+                        <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="emptyMessage">
+                            <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/LocationFilterButtons.asset?fileID=11400000&amp;guid=94c9d271e378389419b049e67633d858&amp;type=2#LocationFilterButtons" data-source-path="latestFitlerBtn" />
+                        </ui:DataBinding>
+                    </Bindings>
+                </ui:Label>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ActivityLogContainer" style="flex-grow: 1; display: flex;">
+            <ui:VisualElement name="TopButtons" style="flex-direction: row; padding-top: 0; margin-top: 30px; margin-bottom: 40px;">
+                <ui:Button text="All" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AllBtn" class="buttonSpacing" style="min-width: auto; min-height: auto; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; width: 80px; height: 29px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; display: none;">
+                    <Bindings>
+                        <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/LocationFilterButtons.asset?fileID=11400000&amp;guid=94c9d271e378389419b049e67633d858&amp;type=2#LocationFilterButtons" data-source-path="allFilterBtn" />
+                    </Bindings>
+                </ui:Button>
+                <ui:Button text="Latest" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LatestBtn" class="buttonSpacing" style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; width: 80px; height: 30px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; display: none;">
+                    <Bindings>
+                        <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/LocationFilterButtons.asset?fileID=11400000&amp;guid=94c9d271e378389419b049e67633d858&amp;type=2#LocationFilterButtons" data-source-path="latestFitlerBtn" />
+                    </Bindings>
+                </ui:Button>
+                <ui:Button text="LocationPlaceholder" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlaceholderBtn" class="buttonSpacing" style="border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height: 30px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; display: none;">
+                    <Bindings>
+                        <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/LocationFilterButtons.asset?fileID=11400000&amp;guid=94c9d271e378389419b049e67633d858&amp;type=2#LocationFilterButtons" data-source-path="placeholderBtn" />
+                    </Bindings>
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:ScrollView name="ActivityLogList" mouse-wheel-scroll-size="175" style="flex-wrap: nowrap; margin-top: 0; padding-top: 20px; padding-bottom: 20px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

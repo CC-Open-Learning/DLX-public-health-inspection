@@ -1,0 +1,114 @@
+.DialogContainer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ConfirmDialog {
+    width: 727px;
+    height: 397px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    padding: 22px 20px 22px 20px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    padding-left: 22px;
+    margin-left: 155px;
+    margin-bottom: 80px;
+}
+
+.HeaderContainer {
+    margin-bottom: 22px;
+}
+
+.Title {
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+}
+
+.BodyContainer {
+    background-color: rgb(45, 45, 45);
+    border-radius: 20px;
+    padding: 15px;
+    min-height: 248px;
+    justify-content: space-around;
+    padding-left: 35px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: auto;
+    margin-bottom: 12px;
+}
+
+.BodyContainerText {
+    font-size: 26px;
+    font-family: Lato;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    width: auto;
+    -unity-text-align: upper-left;
+    white-space: normal;
+}
+
+.ButtonContainer {
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.Button {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 144px;
+    height: 48px;
+    padding: 10.5px 24px 10.5px 24px;
+    font-size: 18px;
+    -unity-font-style: bold;
+}
+
+.ButtonCancel {
+    background-color: rgb(225, 225, 225);
+}
+
+.ButtonConfirm {
+    background-color: rgb(255, 204, 51);
+}
+
+.FooterContainer {
+    align-self: center;
+    flex-direction: row;
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 11px;
+}
+
+.FooterText {
+    font-size: 18px;
+    color: rgb(33, 216, 255);
+    -unity-font-style: normal;
+}
+
+.FooterIcon {
+    width: 28px;
+    height: 28px;
+    background-image: url('project://database/Assets/Art/Sprites/InfoSmall.png?fileID=2800000&guid=5963218e74d13d845ae7bd548fe7e573&type=3#InfoSmall');
+    -unity-slice-top: 0;
+    -unity-text-align: middle-left;
+    align-items: stretch;
+    align-self: flex-start;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}

@@ -1,0 +1,153 @@
+.EditOptions {
+    color: rgb(255, 255, 255);
+    background-color: rgba(188, 188, 188, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(255, 255, 255);
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-left: 0;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 18px;
+}
+
+.UnSelectedPhoto {
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(188, 188, 188, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgb(6, 113, 224);
+    border-right-color: rgb(6, 113, 224);
+    border-top-color: rgb(6, 113, 224);
+    border-bottom-color: rgb(6, 113, 224);
+}
+
+.SelectedPhoto {
+    flex-direction: column-reverse;
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(188, 188, 188, 0);
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-color: rgb(6, 113, 224);
+    border-right-color: rgb(6, 113, 224);
+    border-top-color: rgb(6, 113, 224);
+    border-bottom-color: rgb(6, 113, 224);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.Check {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    background-image: url("project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=7433338533053954386&guid=20770008baba6b446a0ac8540e5be29b&type=3#check@2x");
+    background-color: rgb(6, 113, 224);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#GalleryList .unity-scroller--vertical .unity-base-slider__dragger {
+    height: 100%;
+    width: 10px;
+    align-self: flex-end;
+    background-color: white;
+    border-width: 0;
+    margin-left: 10.5px;
+    padding: 0;
+    border-radius: 3px;
+}
+
+#GalleryList .unity-scroller--vertical .unity-base-slider__tracker {
+    height: 100%;
+    width: 10px;
+    align-self: flex-end;
+    border-width: 0;
+    margin-left: 13.5px;
+    padding: 0;
+    background-color: rgb(128, 128, 128);
+    border-radius: 3px;
+}
+
+#GalleryList .unity-scroller__high-button {
+    display: none;
+}
+
+#GalleryList .unity-scroller__low-button {
+    display: none;
+}
+
+#GalleryList .unity-scroller--vertical .unity-scroller__slider {
+    margin: 0;
+}
+
+.buttonSpacing {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.WhiteOnHover:hover {
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.5);
+}
+
+
+#PhotoIcon
+{
+    margin-bottom: 56px;
+    align-self: center;
+    width: 190px;
+    height: 195px;
+}
+
+
+#EmptyGalleryContainer
+{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+#EmptyMessage
+{
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    font-size: 22px; 
+    -unity-font-style: bold;
+    margin-bottom: 32px;
+}
+
+.template-container
+{
+    height: 100%;
+}

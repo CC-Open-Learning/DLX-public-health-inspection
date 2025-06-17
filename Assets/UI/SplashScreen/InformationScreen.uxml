@@ -1,0 +1,45 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/SplashScreen/Info.uss?fileID=7433441132597879392&amp;guid=cc49f15e3ea369c42925211552858822&amp;type=3#Info" />
+    <Style src="project://database/Assets/UI/Uss/Buttons.uss?fileID=7433441132597879392&amp;guid=da8d6bcf8ef71944f94098137d219d2b&amp;type=3#Buttons" />
+    <engine:VisualElement name="Background" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.78); align-items: center; justify-content: center;">
+        <engine:VisualElement name="Window" style="background-color: rgb(0, 0, 0); width: 950px; height: 600px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <engine:VisualElement name="NewTopBar" style="flex-grow: 1; flex-direction: row-reverse; width: 100%; height: 75px; border-top-left-radius: 20px; border-top-right-radius: 20px; justify-content: space-between;">
+                <engine:VisualElement name="BarRight" style="flex-grow: 1; height: 24px; width: 100%; flex-shrink: 0; align-self: auto; position: absolute; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20601.png?fileID=2800000&amp;guid=af6c34ea3c27b45419f8d11772f94c06&amp;type=3#Rectangle 601&quot;); border-top-right-radius: 20px; border-top-left-radius: 20px; justify-content: flex-start; align-items: auto;" />
+                <engine:VisualElement name="BarLeft" style="flex-grow: 0; height: 100%; width: 289px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20600.png?fileID=2800000&amp;guid=177521a1530c24648a5a350c27d5fd29&amp;type=3#Rectangle 600&quot;); border-left-width: 0; border-top-left-radius: 20px; position: absolute; left: 0; align-items: center; justify-content: center;">
+                    <engine:Label text="Welcome" name="WindowTitle" style="font-size: 36px; -unity-text-align: upper-center; color: rgb(255, 255, 255); align-self: flex-start; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 38px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="ContentArea" style="flex-grow: 1; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 50px;">
+                <engine:Label text="Label" data-source="project://database/Assets/Scriptable%20Objects/Strings/PHIInfoStringSO.asset?fileID=11400000&amp;guid=0ba3b0e3716da0242be68612b08751b9&amp;type=2#PHIInfoStringSO" name="ContentTitle" style="font-size: 36px; color: rgb(255, 255, 255); -unity-font-style: bold;">
+                    <Bindings>
+                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source-path="ContentTitle" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="Label" name="ContentDesc" data-source="project://database/Assets/Scriptable%20Objects/Strings/PHIInfoStringSO.asset?fileID=11400000&amp;guid=0ba3b0e3716da0242be68612b08751b9&amp;type=2#PHIInfoStringSO" style="font-size: 27px; color: rgb(255, 255, 255); margin-bottom: 30px;">
+                    <Bindings>
+                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source-path="ContentDescription" />
+                    </Bindings>
+                </engine:Label>
+                <engine:VisualElement name="BoxContainer" style="flex-direction: row; justify-content: center; align-items: stretch; margin-bottom: 0; width: 100%; height: 300px; padding-right: 40px; padding-left: 40px;">
+                    <engine:VisualElement name="Info1" style="flex-grow: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; width: 33%;">
+                        <engine:VisualElement name="Icon" style="flex-grow: 1; background-color: rgb(99, 112, 110); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/Mouse_Look.png?fileID=2800000&amp;guid=1f07e1f7b3828464c82f7057bbe20802&amp;type=3#Mouse_Look&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                        <engine:Label text="Click and drag your mouse to look around" name="InfoLabel" style="height: 100px; color: rgb(255, 255, 255); white-space: normal; -unity-text-align: upper-center; font-size: 26px;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Info2" style="flex-grow: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; width: 33%;">
+                        <engine:VisualElement name="Icon" style="flex-grow: 1; background-color: rgb(99, 112, 110); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/Arrow_Target.png?fileID=2800000&amp;guid=c4803274a6f98c14fa1ab537ccd5362f&amp;type=3#Arrow_Target&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                        <engine:Label text="Click targets on the floor to move" name="InfoLabel" style="height: 100px; color: rgb(255, 255, 255); font-size: 26px; -unity-text-align: upper-center; white-space: normal;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Info3" style="flex-grow: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; width: 33%;">
+                        <engine:VisualElement name="Icon" style="flex-grow: 1; background-color: rgb(99, 112, 110); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/Arrow_Object.png?fileID=2800000&amp;guid=de4787f8cb36f8d458029308c23d7cd8&amp;type=3#Arrow_Object&quot;); -unity-background-scale-mode: scale-to-fit;" />
+                        <engine:Label text="Click highlighted objects to interact" name="InfoLabel" style="height: 100px; color: rgb(255, 255, 255); white-space: normal; -unity-text-align: upper-center; font-size: 26px;" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:Button text="Button" name="BeginBtn" parse-escape-sequences="false" class="BtnDefault BtnPrimary" style="width: 212px; height: 48px; font-size: 20px; -unity-font-style: bold; margin-bottom: 40px;">
+                    <Bindings>
+                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/PHIInfoStringSO.asset?fileID=11400000&amp;guid=0ba3b0e3716da0242be68612b08751b9&amp;type=2#PHIInfoStringSO" data-source-path="ButtonText" />
+                    </Bindings>
+                </engine:Button>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

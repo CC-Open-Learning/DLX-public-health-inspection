@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9485b727edbe26646846364ec48b50b9, type: 3}
+  m_Name: RestartModal
+  m_EditorClassIdentifier: 
+  ModalName: Restart
+  ModalTitle: Restart
+  ContentTitle: 
+  Content: '<size=24><b>If you chose to restart, your current progress will be lost!</b>
+
+
+    Are
+    you sure you want to restart?</size>'
+  ContentFontSize: 27
+  FooterText: 
+  FooterIcon: {fileID: 0}
+  ConfirmationToggleText: 
+  SecondaryConfirmationToggleText: 
+  ConfirmationToggleFontSize: 24
+  PrimaryBtnText: Restart
+  SecondaryBtnText: Cancel
+  PrimaryBtnColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  SecondaryBtnColor: {r: 1, g: 1, b: 1, a: 1}
+  PrimaryBtnTxtColor: {r: 0, g: 0, b: 0, a: 0}
+  SecondaryBtnTxtColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+  BtnFontSize: 20
+  PrimaryBtnWidth: 144
+  ModalTitleAlign: 0
+  ContentTitleAlign: 0
+  ContentAlign: 0
+  FooterAlign: 0
+  ConfirmationToggleAlign: 0
+  SecondaryConfirmationToggleAlign: 0
+  IsPrimaryBtnEnabled: 1
+  IsPrimaryBtnClickable: 1
+  IsSecondaryBtnEnabled: 1
+  IsCloseBtnEnabled: 0
+  BaseWindow: 1
+  IsBackgroundDimmed: 0
+  IsConfirmationToggleEnabled: 0
+  IsSecondaryConfirmationToggleEnabled: 0
+  ModalWidth: 827
+  ModalHeight: 354
+  CustomBtnUSSClasses:
+  - elementName: PrimaryBtn
+    className: BtnPrimary
+  - elementName: SecondaryBtn
+    className: BtnSecondary1

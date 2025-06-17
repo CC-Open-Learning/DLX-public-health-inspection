@@ -1,0 +1,171 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Uss/Buttons.uss?fileID=7433441132597879392&amp;guid=da8d6bcf8ef71944f94098137d219d2b&amp;type=3#Buttons" />
+    <engine:VisualElement name="Canvas" style="flex-grow: 1; justify-content: center; align-items: center;">
+        <engine:VisualElement name="InspectionSummaryWindow" style="flex-grow: 0; align-self: center; width: 1428px; height: 915px; background-color: rgb(38, 38, 38); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <engine:VisualElement name="Header" class="header" style="flex-grow: 0; width: 100%; height: 101px; flex-direction: row; align-items: stretch; justify-content: flex-start; align-self: auto;">
+                <engine:VisualElement name="HeaderLeft" class="header" style="flex-grow: 0; width: 563px; height: 100%; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20600.png?fileID=2800000&amp;guid=177521a1530c24648a5a350c27d5fd29&amp;type=3#Rectangle 600&quot;); border-top-left-radius: 20px; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; flex-direction: row; align-items: center;">
+                    <engine:Label name="WindowTitle" style="font-size: 34px; color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 43px; -unity-font-style: bold;">
+                        <Bindings>
+                            <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="InspectionSummary" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+                <engine:VisualElement name="HeaderRight" class="header" style="flex-grow: 1; width: 900px; height: 24px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20601.png?fileID=2800000&amp;guid=af6c34ea3c27b45419f8d11772f94c06&amp;type=3#Rectangle 601&quot;); border-top-right-radius: 20px; position: absolute; left: 528px; border-top-left-radius: 20px; align-self: auto;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Body" style="flex-grow: 0; width: 100%; height: 678px; flex-direction: row; margin-top: 0; padding-top: 38px;">
+                <engine:VisualElement name="BodyLeft" style="flex-grow: 0; padding-right: 46px; width: 986px;">
+                    <engine:VisualElement name="Overview" style="flex-grow: 0; width: 940px; height: 349px; background-color: rgb(45, 45, 45); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-bottom-width: 4px; border-right-width: 2px;">
+                        <engine:VisualElement name="OverviewTop" style="flex-grow: 0; flex-direction: row; height: 158px; width: 100%;">
+                            <engine:VisualElement name="InspectionDate" style="flex-grow: 0; width: 33.3%;">
+                                <engine:Label name="InspectioDateLbl" class="header" style="color: rgb(255, 192, 9); font-size: 24px; -unity-font-style: bold; margin-top: 46px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="InspectionDate" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="Placeholder" name="InspectionDateTxt" style="color: rgb(255, 255, 255); font-size: 36px; margin-top: 12px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Facility" style="flex-grow: 0; width: 33.3%;">
+                                <engine:Label name="FacilityLbl" class="header" style="color: rgb(255, 192, 9); font-size: 24px; -unity-font-style: bold; margin-top: 46px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="Facility" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label name="FacilityTxt" style="color: rgb(255, 255, 255); font-size: 36px; margin-top: 12px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="Restaurant" />
+                                    </Bindings>
+                                </engine:Label>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Bar" style="flex-grow: 1; width: 3px; height: 100px; align-self: center; background-color: rgb(255, 192, 9);" />
+                            <engine:VisualElement name="TotalTime" style="flex-grow: 0; width: 33.3%;">
+                                <engine:Label name="TimeLbl" class="header" style="color: rgb(255, 192, 9); font-size: 24px; -unity-font-style: bold; margin-top: 46px; margin-right: 0; margin-bottom: 0; margin-left: 24px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="TotalTime" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="2 hrs 45 mins" name="TimeTxt" data-source="project://database/Assets/Scriptable%20Objects/Strings/Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=4a32c0ab411e00248918f6163878e02b&amp;type=2#Inspection Summary String SO" style="color: rgb(255, 255, 255); font-size: 36px; margin-top: 12px; margin-right: 0; margin-bottom: 0; margin-left: 24px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold; -unity-text-align: middle-left;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        <engine:VisualElement name="OverviewBar" style="flex-grow: 0; height: 2px; width: 704px; align-self: center; background-color: rgb(121, 116, 126);" />
+                        <engine:VisualElement name="OverviewBottom" style="flex-grow: 0; height: 187px; width: 100%; flex-direction: row;">
+                            <engine:VisualElement name="NonCompliances" style="flex-grow: 0; width: 33.3%;">
+                                <engine:Label name="NonComplianceLbl" parse-escape-sequences="true" class="header" style="color: rgb(220, 220, 220); font-size: 24px; -unity-font-style: bold; margin-top: 45px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="NonCompliances" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="20" name="NonComplianceTxt" style="color: rgb(255, 255, 255); font-size: 36px; margin-top: 20px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Compliances" style="flex-grow: 0; width: 33.3%;">
+                                <engine:Label name="ComplianceLbl" parse-escape-sequences="true" class="header" style="color: rgb(220, 220, 220); font-size: 24px; -unity-font-style: bold; margin-top: 45px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="Compliances" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="16" name="ComplianceTxt" style="color: rgb(255, 255, 255); font-size: 36px; margin-top: 20px; margin-right: 0; margin-bottom: 0; margin-left: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="Bar" style="flex-grow: 1; width: 3px; height: 118px; align-self: center; background-color: rgb(255, 192, 9);" />
+                            <engine:VisualElement name="Locations" style="flex-grow: 0; width: 33.3%;">
+                                <engine:Label name="LocationsLbl" parse-escape-sequences="true" class="header" style="color: rgb(220, 220, 220); font-size: 24px; -unity-font-style: bold; margin-top: 45px; margin-right: 0; margin-bottom: 0; margin-left: 24px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="Locations" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:Label text="6 / 10" name="LocationsTxt" style="color: rgb(255, 255, 255); font-size: 36px; margin-top: 20px; margin-right: 0; margin-bottom: 0; margin-left: 24px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Downloads" style="flex-grow: 1; flex-direction: column;">
+                        <engine:VisualElement name="DownloadsTitle" style="flex-grow: 0; height: 88px; width: 100%; flex-direction: row; justify-content: flex-start;">
+                            <engine:VisualElement name="BarLeft" style="flex-grow: 0; width: 218px; height: 100%; flex-direction: row; align-self: center; align-items: auto; justify-content: flex-end;">
+                                <engine:VisualElement style="flex-grow: 0; height: 1.1px; align-self: center; width: 160px; justify-content: center; background-color: rgb(151, 151, 151); margin-left: 0; padding-left: 0; margin-right: 14px;" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="InfoIcon" style="flex-grow: 0; width: 60px; height: 100%; background-image: resource(&apos;Images/Notification_Info_Sprite&apos;); -unity-background-scale-mode: scale-to-fit; padding-right: 0; margin-right: 10px; margin-left: 10px;" />
+                            <engine:VisualElement name="DownloadsLbl" style="flex-grow: 0; width: 482px; height: 100%; flex-direction: row; justify-content: center;">
+                                <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(151, 151, 151); font-size: 26px; align-self: center; justify-content: center; -unity-font-style: bold;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="DownloadInfo" />
+                                    </Bindings>
+                                </engine:Label>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="BarRight" style="flex-grow: 0; width: 180px; height: 100%; flex-direction: row; align-items: auto; justify-content: flex-end;">
+                                <engine:VisualElement style="flex-grow: 0; height: 1.1px; align-self: center; width: 180px; justify-content: flex-start; background-color: rgb(151, 151, 151); margin-left: 0; padding-left: 0; flex-direction: row-reverse;" />
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                        <engine:VisualElement name="DownloadsBody" style="flex-grow: 1; height: 203px; width: 100%; flex-direction: row;">
+                            <engine:VisualElement name="PDFContent" style="flex-grow: 0; width: 50%;">
+                                <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 300px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 20px; color: rgb(151, 151, 151); -unity-font-style: bold;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="PDFContains" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:VisualElement style="flex-grow: 0; height: 32px; padding-top: 0; margin-top: 9px; flex-direction: row; padding-left: 250px;">
+                                    <engine:VisualElement name="Icon" style="flex-grow: 0; height: 32px; width: 32px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/check-circle.png?fileID=2800000&amp;guid=f7f9f5e95d942634ea2e6e6c50622eba&amp;type=3#check-circle&quot;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;" />
+                                    <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(255, 255, 255); font-size: 20px; -unity-text-align: middle-left;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="InspectionSummary" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                                <engine:VisualElement style="flex-grow: 0; height: 32px; padding-top: 0; margin-top: 9px; flex-direction: row; padding-left: 250px;">
+                                    <engine:VisualElement name="Icon" style="flex-grow: 0; height: 32px; width: 32px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/check-circle.png?fileID=2800000&amp;guid=f7f9f5e95d942634ea2e6e6c50622eba&amp;type=3#check-circle&quot;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;" />
+                                    <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(255, 255, 255); font-size: 20px; -unity-text-align: middle-left;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="InspectionLog" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                                <engine:VisualElement style="flex-grow: 0; height: 32px; padding-top: 0; margin-top: 9px; flex-direction: row; padding-left: 250px;">
+                                    <engine:VisualElement name="Icon" style="flex-grow: 0; height: 32px; width: 32px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/check-circle.png?fileID=2800000&amp;guid=f7f9f5e95d942634ea2e6e6c50622eba&amp;type=3#check-circle&quot;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;" />
+                                    <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(255, 255, 255); font-size: 20px; -unity-text-align: middle-left;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="ActivityLog" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                            <engine:VisualElement name="ZipContent" style="flex-grow: 0; width: 50%;">
+                                <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 102px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 20px; color: rgb(151, 151, 151); -unity-font-style: bold;">
+                                    <Bindings>
+                                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="ZIPContains" />
+                                    </Bindings>
+                                </engine:Label>
+                                <engine:VisualElement style="flex-grow: 0; height: 32px; padding-top: 0; margin-top: 9px; flex-direction: row; padding-left: 60px;">
+                                    <engine:VisualElement name="Icon" style="flex-grow: 0; height: 32px; width: 32px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/check-circle.png?fileID=2800000&amp;guid=f7f9f5e95d942634ea2e6e6c50622eba&amp;type=3#check-circle&quot;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0;" />
+                                    <engine:Label style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(255, 255, 255); font-size: 20px; -unity-text-align: middle-left;">
+                                        <Bindings>
+                                            <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="PhotoGallery" />
+                                        </Bindings>
+                                    </engine:Label>
+                                </engine:VisualElement>
+                            </engine:VisualElement>
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="BodyRight" style="flex-grow: 0; width: 442px; height: 100%; padding-bottom: 44px; padding-right: 39px;">
+                    <engine:VisualElement name="VisualElement" style="flex-grow: 0; border-left-color: rgb(255, 205, 41); border-right-color: rgb(255, 205, 41); border-top-color: rgb(255, 205, 41); border-bottom-color: rgb(255, 205, 41); border-bottom-width: 4px; border-right-width: 2px; height: 598px; background-color: rgb(45, 45, 45); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; width: 403px;">
+                        <engine:Label style="font-size: 26px; color: rgb(151, 151, 151); margin-top: 26.7px; margin-right: 0; margin-bottom: 0; margin-left: 29px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-font-style: bold; height: 33.88px; width: 100%;">
+                            <Bindings>
+                                <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="LocationsNotInspected" />
+                            </Bindings>
+                        </engine:Label>
+                        <engine:Label name="LocationsListLbl" parse-escape-sequences="true" style="font-size: 24px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 25px; margin-right: 0; margin-bottom: 0; margin-left: 34px; color: rgb(255, 255, 255); -unity-paragraph-spacing: 30px; height: 470px;" />
+                        <engine:Label name="LocationCount" style="color: rgb(151, 151, 151); font-size: 20px; -unity-text-align: upper-right; -unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 35px; padding-bottom: 0; padding-left: 0; height: 31px; width: 100%;" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="Footer" style="flex-grow: 1; height: 136px; flex-direction: row-reverse; margin-left: 30px; margin-right: 39px; border-left-color: rgb(179, 179, 179); border-right-color: rgb(179, 179, 179); border-top-color: rgb(179, 179, 179); border-bottom-color: rgb(179, 179, 179); border-top-width: 1px;">
+                <engine:Button name="PrimaryButton" class="BtnPrimary" style="width: 300px; height: 62px; margin-top: 29px; margin-right: 0; margin-bottom: 0; margin-left: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 26px; -unity-font-style: bold;">
+                    <Bindings>
+                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="PrimaryButton" />
+                    </Bindings>
+                </engine:Button>
+                <engine:Button name="SecondayButton" class="BtnSecondary1" style="width: 300px; height: 62px; margin-top: 29px; margin-right: 29px; margin-bottom: 0; margin-left: 0; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 26px; -unity-font-style: bold;">
+                    <Bindings>
+                        <engine:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/New%20Inspection%20Summary%20String%20SO.asset?fileID=11400000&amp;guid=3cda314f3111bcf47bb940da8ec64f7b&amp;type=2#New Inspection Summary String SO" data-source-path="SecondaryButton" />
+                    </Bindings>
+                </engine:Button>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

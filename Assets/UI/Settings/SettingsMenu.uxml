@@ -1,0 +1,65 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Toggle" src="project://database/Assets/VELCRO%20UI/Templates/Toggle/Toggle.uxml?fileID=9197481963319205126&amp;guid=99f9f23e8d3400747b660070e36d94d3&amp;type=3#Toggle" />
+    <engine:Template name="Slider" src="project://database/Assets/VELCRO%20UI/Templates/Slider/Slider.uxml?fileID=9197481963319205126&amp;guid=d161493787370dc449c32fd3187c47a1&amp;type=3#Slider" />
+    <Style src="project://database/Assets/VELCRO%20UI/Style%20Sheets/velcro-components.uss?fileID=7433441132597879392&amp;guid=360350781794bd14f942000338374586&amp;type=3#velcro-components" />
+    <engine:VisualElement name="Canvas" style="flex-grow: 1; align-items: auto; justify-content: center; -unity-font-style: bold;">
+        <engine:VisualElement name="SettingsWindow" style="flex-grow: 0; width: 1080px; height: 747px; align-self: center; background-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <engine:VisualElement name="Header" style="flex-grow: 0; height: 75px; width: 100%; flex-direction: row;">
+                <engine:VisualElement name="HeaderLeft" style="flex-grow: 0; width: 289px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20600.png?fileID=2800000&amp;guid=177521a1530c24648a5a350c27d5fd29&amp;type=3#Rectangle 600&quot;); border-top-left-radius: 20px; align-items: auto; justify-content: center;">
+                    <engine:Label text="Settings" style="align-self: flex-start; color: rgb(255, 255, 255); font-size: 36px; text-overflow: ellipsis; margin-left: 34px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="HeaderRight" style="flex-grow: 1;">
+                    <engine:VisualElement name="TopBar" style="flex-grow: 0; height: 24px; width: 908px; align-self: flex-end; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20601.png?fileID=2800000&amp;guid=af6c34ea3c27b45419f8d11772f94c06&amp;type=3#Rectangle 601&quot;); border-top-right-radius: 20px; flex-shrink: 0;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="Body" style="flex-grow: 1;">
+                <engine:Button name="CloseBtn" icon-image="project://database/Assets/Art/Sprites/UI/Icons/Close%20button.png?fileID=2800000&amp;guid=dcc1da61f006bbc4d95251b6eb5eb8ed&amp;type=3#Close button" style="width: 40px; height: 40px; margin-top: 0; margin-right: 28px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgba(188, 188, 188, 0); align-self: flex-end; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);" />
+                <engine:VisualElement name="Sound" style="flex-grow: 0; flex-direction: row; width: 100%; margin-top: 34.5px; justify-content: space-between; height: 50px; align-items: auto;">
+                    <engine:Label text="Sound" name="SoundLabel" style="align-self: flex-start; font-size: 40px; color: rgb(225, 225, 225); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 80px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <engine:VisualElement name="Toggle" style="flex-grow: 0; width: 74px; align-self: auto; justify-content: flex-start; align-items: auto; margin-left: 615px; margin-bottom: 3px;">
+                        <engine:Instance template="Toggle" name="SoundToggleBtn" />
+                    </engine:VisualElement>
+                    <engine:Label text="ON" name="SoundTag" style="width: 57px; margin-top: 0; margin-right: 100px; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 36px; color: rgb(225, 225, 225);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="Volume" style="flex-grow: 0; flex-direction: row; width: 100%; margin-top: 65px; justify-content: space-between; height: 50px;">
+                    <engine:Label text="Volume" name="VolumeLabel" style="align-self: flex-start; font-size: 40px; color: rgb(225, 225, 225); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 80px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <engine:VisualElement name="VolumeDown" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/volume-off-svgrepo-com.png?fileID=2800000&amp;guid=f58d12ffddead5546b3163e29e755bc8&amp;type=3#volume-off-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 28px; height: 100%; align-self: flex-end; align-items: flex-end; margin-left: 350px;" />
+                    <engine:VisualElement name="VolumeSlider" style="flex-grow: 0; width: 310px; margin-right: 5px; margin-left: 5px; margin-top: 0; justify-content: center;">
+                        <engine:Instance template="Slider" name="VolumeSliderBtn" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="VolumeUp" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/volume-full-svgrepo-com.png?fileID=2800000&amp;guid=ea57ca59464b22f488c7537d4f4ee6c7&amp;type=3#volume-full-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 34.36px; margin-right: 101.64px; height: 100%;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="SoundEffectsContainer" style="flex-grow: 0; border-left-color: rgba(217, 217, 217, 0); border-right-color: rgba(217, 217, 217, 0); border-top-color: rgba(217, 217, 217, 0); border-bottom-color: rgba(217, 217, 217, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; width: 932px; height: 215px; align-self: auto; margin-right: 68px; margin-left: 80px; margin-top: 50px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/Rectangle%20699.png?fileID=2800000&amp;guid=9365879e40ac19648b6c324c65d85c16&amp;type=3#Rectangle 699&quot;);">
+                    <engine:VisualElement name="SoundEffects" style="flex-grow: 0; flex-direction: row; align-items: stretch; justify-content: space-between;">
+                        <engine:Label text="Sound Effects" name="SoudEffectsLabel" style="margin-top: 35px; margin-right: 0; margin-bottom: 0; margin-left: 41px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 40px; color: rgb(225, 225, 225);" />
+                        <engine:VisualElement name="SliderContainer" style="flex-grow: 1; justify-content: space-evenly; flex-direction: row; margin-top: 35px;">
+                            <engine:VisualElement name="VolumeDown" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/volume-off-svgrepo-com.png?fileID=2800000&amp;guid=f58d12ffddead5546b3163e29e755bc8&amp;type=3#volume-off-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 28px; height: 100%; align-self: flex-end; align-items: flex-end; margin-left: 155px; flex-shrink: 0;" />
+                            <engine:VisualElement name="SoundEffectSlider" style="flex-grow: 0; width: 310px; margin-right: 5px; margin-left: 5px; flex-shrink: 0; justify-content: center;">
+                                <engine:Instance template="Slider" name="SoundEffectSliderBtn" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="VolumeUp" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/volume-full-svgrepo-com.png?fileID=2800000&amp;guid=ea57ca59464b22f488c7537d4f4ee6c7&amp;type=3#volume-full-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 34.36px; margin-right: 26.64px; height: 100%; align-self: flex-end; justify-content: flex-start; margin-top: 0; margin-bottom: 0; margin-left: 0;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                    <engine:VisualElement name="Dialogue" style="flex-grow: 0; flex-direction: row; justify-content: space-between; align-items: stretch;">
+                        <engine:Label text="Dialogue" name="DialogueLabel" style="margin-top: 35px; margin-right: 0; margin-bottom: 0; margin-left: 41px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 40px; color: rgb(225, 225, 225);" />
+                        <engine:VisualElement name="SliderContainer" style="flex-grow: 1; flex-direction: row; justify-content: space-evenly; align-self: auto; margin-top: 35px;">
+                            <engine:VisualElement name="VolumeDown" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/volume-off-svgrepo-com.png?fileID=2800000&amp;guid=f58d12ffddead5546b3163e29e755bc8&amp;type=3#volume-off-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 28px; height: 100%; align-self: flex-end; align-items: auto; margin-left: 270px; flex-shrink: 0; margin-top: 0; padding-top: 0; justify-content: flex-end;" />
+                            <engine:VisualElement name="DialogueSlider" style="flex-grow: 0; width: 310px; margin-right: 5px; margin-left: 5px; flex-shrink: 0; justify-content: center;">
+                                <engine:Instance template="Slider" name="DialogueSliderBtn" />
+                            </engine:VisualElement>
+                            <engine:VisualElement name="VolumeUp" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/volume-full-svgrepo-com.png?fileID=2800000&amp;guid=ea57ca59464b22f488c7537d4f4ee6c7&amp;type=3#volume-full-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 34.36px; margin-right: 26.64px; height: 100%; align-self: flex-end; justify-content: flex-start; margin-top: 0; margin-bottom: 0; margin-left: 0;" />
+                        </engine:VisualElement>
+                    </engine:VisualElement>
+                </engine:VisualElement>
+                <engine:VisualElement name="MouseSensitivity" style="flex-grow: 0; flex-direction: row; width: 100%; margin-top: 37px; justify-content: space-between; height: 50px;">
+                    <engine:Label text="Mouse Sensitivity" name="MouseLabel" style="align-self: flex-start; font-size: 40px; color: rgb(225, 225, 225); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 80px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    <engine:VisualElement name="VolumeDown" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/tortoise-fill-svgrepo-com.png?fileID=2800000&amp;guid=efb24525412aa1e4a952a94f575234d1&amp;type=3#tortoise-fill-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 43.53px; height: 100%; align-self: flex-end; align-items: flex-end; margin-left: 110px;" />
+                    <engine:VisualElement name="VolumeSlider" style="flex-grow: 0; width: 310px; margin-right: 5px; margin-left: 5px; margin-top: 0; justify-content: center;">
+                        <engine:Instance template="Slider" name="MouseSliderBtn" style="width: 310px; flex-shrink: 0;" />
+                    </engine:VisualElement>
+                    <engine:VisualElement name="VolumeUp" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/Icons/rabbit-hare-horny-cute-svgrepo-com.png?fileID=2800000&amp;guid=953a48b4d2df6d747b909578d1a861b5&amp;type=3#rabbit-hare-horny-cute-svgrepo-com&quot;); -unity-background-scale-mode: scale-to-fit; width: 34.36px; margin-right: 101.64px; height: 100%;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

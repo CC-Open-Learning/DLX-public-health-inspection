@@ -1,0 +1,82 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/InspectionWindow/InspectionPopUp.uss?fileID=7433441132597879392&amp;guid=349f13278918b6d4fbcd68fdb8fc7c3b&amp;type=3#InspectionPopUp" />
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement name="MainWindow" data-source="project://database/Assets/Scriptable%20Objects/Strings/InspectionPopupWindow.asset?fileID=11400000&amp;guid=99e58f5cb6218c14185ad4cb9b9aefbc&amp;type=2#InspectionPopupWindow" style="width: 966px; height: 760px; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; flex-direction: row; align-self: center; align-items: stretch; margin-top: 0;">
+            <ui:VisualElement name="ToolArea" style="width: 175px; background-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; justify-content: space-evenly; align-self: auto; margin-right: 22px; height: 100%;">
+                <ui:VisualElement name="CameraContainer">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="VisualBtn" text="Take &#10;Photo" emoji-fallback-support="false" icon-image="project://database/Assets/Art/Sprites/UI/InspectionUI/VisualInspection.png?fileID=2800000&amp;guid=fa7dd89b7ff060d438a364f6c29021bb&amp;type=3#VisualInspection" selectable="true" class="ButtonStyle" style="align-items: center;">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="visualToolBtn" />
+                        </Bindings>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="ProbeContainer">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProbeBtn" icon-image="project://database/Assets/Art/Sprites/UI/InspectionUI/ProbeIconInspection.png?fileID=2800000&amp;guid=5aeabb3ee39b425488939472bb6535fb&amp;type=3#ProbeIconInspection" class="ButtonStyle" style="align-items: center;">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="ProbeToolBtn" />
+                        </Bindings>
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="IRTempContainer">
+                    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="IRTempBtn" icon-image="project://database/Assets/Art/Sprites/UI/InspectionUI/InfraIconInspection.png?fileID=2800000&amp;guid=0ec16505aaa1d134fafcba45c0bdc76c&amp;type=3#InfraIconInspection" class="ButtonStyle" style="align-items: center;">
+                        <Bindings>
+                            <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="InfraredToolBtn" />
+                        </Bindings>
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ContentArea" style="flex-grow: 1; width: 769px; height: 100%;">
+                <ui:VisualElement name="TopBarContainer" class="SectionBackground" style="flex-grow: 1; flex-direction: row; height: 95px; min-height: 95px; max-height: 95px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                    <ui:VisualElement name="ItemLblContainer" style="flex-grow: 1; align-items: flex-start;">
+                        <ui:Label text="[LocationPlaceholder]" name="LocationLbl" class="Location" />
+                        <ui:Label tabindex="-1" text="[Place Holder For Item Name]" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ItemLbl" class="Item" />
+                    </ui:VisualElement>
+                    <ui:Button text="X" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CloseBtn" style="font-size: 22px; border-top-left-radius: 65px; border-bottom-left-radius: 65px; border-top-right-radius: 65px; border-bottom-right-radius: 65px; width: 50px; height: 50px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); -unity-font-style: bold; border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; top: auto; margin-top: 25px; right: 37px; position: absolute; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ItemVisualArea" style="width: 100%; height: 486px; border-top-width: 0; border-right-width: 3px; border-bottom-width: 0; border-left-width: 3px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                    <ui:VisualElement name="ItemVisual" style="background-color: rgba(56, 56, 56, 0); width: 100%; height: 100%; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                        <ui:VisualElement name="Flash" style="flex-grow: 1; display: flex; width: 100%; height: 100%;">
+                            <ui:VisualElement name="PhotoBorder" class="PhotoFrame" style="justify-content: center; align-items: flex-end; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InspectionUI/PhotoCorners.png?fileID=2800000&amp;guid=c882a4645e2d7c94d8ae347273fdc42e&amp;type=3#PhotoCorners&quot;);">
+                                <ui:Button name="TakePhotoBtn" icon-image="project://database/Assets/Art/Sprites/UI/InspectionUI/PhotoBtn%201.png?fileID=2800000&amp;guid=67ef18c234b063b45a6b873c44456792&amp;type=3#PhotoBtn 1" class="ButtonStyle PhotoBtnStyle" style="justify-content: flex-start; display: flex; visibility: visible;" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="InfraPopUp" class="InfraTemp" style="flex-grow: 1; display: none; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InspectionUI/InfraThermoPopUp.png?fileID=2800000&amp;guid=2e9ff26d08de76b4aac605b2d948dee8&amp;type=3#InfraThermoPopUp&quot;); background-color: rgba(255, 255, 255, 0); left: 30%; width: 348px; height: 562px;">
+                    <ui:VisualElement style="flex-grow: 1; position: absolute; left: 38px; top: 69px; width: 238px; height: 117px; background-color: rgb(0, 0, 0);" />
+                    <ui:Label tabindex="-1" text="35.5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InfraTemp" style="position: absolute; left: 5px; top: 47px; color: rgb(255, 255, 255); font-size: 64px; -unity-text-align: middle-right; width: 220px; flex-grow: 1; flex-direction: row; height: 142px;" />
+                    <ui:Label tabindex="-1" text="ºC" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InfraCelsiusSymbol" style="position: absolute; left: 227px; top: 79px; color: rgb(255, 255, 255); font-size: 40px; -unity-text-align: middle-center; width: 50px; flex-grow: 1; flex-direction: row; height: 40px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="ProbePopUp" class="ProbeTemp" style="flex-grow: 1; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; display: none; visibility: visible; left: 30%; height: 436px; width: 362px;">
+                    <ui:VisualElement style="flex-grow: 1; position: absolute; left: 48px; top: 43px; width: 211px; height: 201px; border-top-left-radius: 468px; border-bottom-left-radius: 468px; border-top-right-radius: 468px; border-bottom-right-radius: 468px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; background-color: rgb(0, 0, 0);" />
+                    <ui:Label tabindex="-1" text="35.5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProbeTemp" style="color: rgb(255, 255, 255); font-size: 64px; position: absolute; left: 46px; top: 94px; width: 149px; -unity-text-align: upper-right;" />
+                    <ui:Label tabindex="-1" text="Probe" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 28px; color: rgb(255, 255, 255); position: absolute; left: 109px; top: 198px;" />
+                    <ui:Label tabindex="-1" text="ºC" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ProbeCelsiusSymbol" style="color: rgb(255, 255, 255); font-size: 48px; position: absolute; left: 196px; top: 89px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="CompliantBtnArea" class="SectionBackground" style="flex-direction: column; justify-content: center; padding-top: 0; height: 179px; max-height: 180px; min-height: 180px; border-top-right-radius: 0; border-top-left-radius: 0; flex-grow: 0; width: 100%;">
+                    <ui:VisualElement name="Lbls" style="flex-grow: 0; width: 100%; height: 82px;">
+                        <ui:Label tabindex="-1" text="PlaceHolder Information Text" parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="false" name="InfoLbl" class="InspectionToolText" style="white-space: normal; margin-top: 0; width: 100%; height: 100%; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 25px; padding-right: 20px; padding-bottom: 0; padding-left: 20px; font-size: 22px; text-overflow: ellipsis;">
+                            <Bindings>
+                                <ui:DataBinding property="text" binding-mode="ToTarget" data-source-path="CurrentInspectionMesssage" />
+                            </Bindings>
+                        </ui:Label>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Btns" style="flex-grow: 0; flex-direction: row; align-self: center; width: 100%; height: 96px; justify-content: space-evenly;">
+                        <ui:Button text="Compliant" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CompliantBtn" class="OutlineButton CompliantBtnStyle CompliantOutlineButton" style="width: 314px; height: 63px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 26px; -unity-font-style: bold;">
+                            <ui:VisualElement style="position: relative; width: 28.8px; height: 27.4px; background-image: url(&quot;project://database/Assets/Resources/Sprites/CompliantCheckmark.png?fileID=2800000&amp;guid=4a0c68bc5a11f1c48abe5479748df504&amp;type=3#CompliantCheckmark&quot;); left: auto; -unity-background-scale-mode: scale-to-fit; align-self: flex-start; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 17px; margin-left: 34.9px;" />
+                            <Bindings>
+                                <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/InspectionPopupWindow.asset?fileID=11400000&amp;guid=99e58f5cb6218c14185ad4cb9b9aefbc&amp;type=2#InspectionPopupWindow" data-source-path="CompliantBtnText" />
+                            </Bindings>
+                        </ui:Button>
+                        <ui:Button text="Non-Compliant" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NonCompliantBtn" class="NonCompliantBtn NonCompliantOutlineButton" style="width: 314px; height: 63px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 30.5px; padding-bottom: 0; padding-left: 0; font-size: 24px; -unity-font-style: bold; -unity-text-align: middle-right;">
+                            <ui:VisualElement style="position: relative; width: 42.86px; height: 41px; left: auto; background-image: url(&quot;project://database/Assets/Resources/Sprites/Non-CompliantIcon.png?fileID=2800000&amp;guid=a8933e121ffe1994990f663146bf7b02&amp;type=3#Non-CompliantIcon&quot;); top: auto; -unity-background-scale-mode: scale-to-fit; margin-top: 11px; margin-left: 27.18px;" />
+                            <Bindings>
+                                <ui:DataBinding property="text" binding-mode="ToTarget" data-source="project://database/Assets/Scriptable%20Objects/Strings/InspectionPopupWindow.asset?fileID=11400000&amp;guid=99e58f5cb6218c14185ad4cb9b9aefbc&amp;type=2#InspectionPopupWindow" data-source-path="NonCompliantBtnText" />
+                            </Bindings>
+                        </ui:Button>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,26 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Dialogs/InformationModal.uss?fileID=7433441132597879392&amp;guid=3a971b2fa2d5fd84abea59e996c9b1ab&amp;type=3#InformationModal" />
+    <Style src="project://database/Assets/UI/Uss/Buttons.uss?fileID=7433441132597879392&amp;guid=da8d6bcf8ef71944f94098137d219d2b&amp;type=3#Buttons" />
+    <engine:VisualElement name="Canvas" style="flex-grow: 1; align-items: center; align-self: auto; justify-content: center; display: flex;">
+        <engine:VisualElement name="InformationWindow" style="flex-grow: 0; width: 1000px; height: 500px; align-items: center; align-self: center; background-color: rgb(0, 0, 0); border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <engine:VisualElement name="Header" style="flex-grow: 1; flex-direction: row; height: 75px; width: 1000px;">
+                <engine:VisualElement name="Title" style="flex-grow: 0; width: 298px; height: 75px; background-image: url(&quot;project://database/Assets/Art/Sprites/UI/InformationModal/Rectangle%20600.png?fileID=2800000&amp;guid=177521a1530c24648a5a350c27d5fd29&amp;type=3#Rectangle 600&quot;); justify-content: flex-start; align-items: center; flex-direction: row;">
+                    <engine:Label text="WindowTitle" name="WindowTitle" style="align-items: center; align-self: center; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=7c9d5bf8b4537425ab45d1a5de467a0b&amp;type=3#NotInter-Regular&quot;); font-size: 36px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 15px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="Bar" style="flex-grow: 1; height: 24px; width: 847px; align-items: auto; align-self: auto; background-image: none; position: absolute; right: auto; left: 153px; background-color: rgb(97, 109, 108); border-top-left-radius: 0; border-top-right-radius: 20px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Body" style="flex-grow: 0; align-items: flex-start; height: 313px; padding-left: 50px; padding-right: 50px; justify-content: flex-start;">
+                <engine:VisualElement name="BodyTitle" style="flex-grow: 0; flex-direction: row; height: auto; align-self: flex-start; justify-content: center; align-items: center; -unity-text-align: middle-left; margin-top: 56px; display: flex;">
+                    <engine:Label text="MessageTitle" name="MessageTitle" style="flex-grow: 1; flex-direction: row; flex-shrink: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 40px; color: rgb(255, 255, 255); -unity-text-align: middle-left; -unity-font-style: normal; -unity-font-definition: url(&quot;project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=20770008baba6b446a0ac8540e5be29b&amp;type=3#NotInter-Regular&quot;); white-space: normal; align-self: flex-start;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="BodyMessage" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: flex-start; margin-bottom: 0; margin-top: 0;">
+                    <engine:VisualElement name="Icon" style="flex-grow: 1; background-image: resource(&apos;Sprites/ModalCheck&apos;); width: 85px; height: 80px; max-width: 85px; max-height: 80px; justify-content: center; margin-top: auto; margin-right: 24px; margin-bottom: auto; margin-left: auto; display: flex;" />
+                    <engine:Label text="MessageBody" name="MessageBody" style="flex-shrink: 1; flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; color: rgb(255, 255, 255); font-size: 34px; white-space: normal; justify-content: flex-start; align-items: stretch; -unity-text-align: middle-left;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="Buttons" style="flex-grow: 1; max-height: none; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; width: 300px; height: 62px; margin-bottom: 41px; font-size: 28px; -unity-text-align: middle-center; margin-top: 0;">
+                <engine:Button text="Restart" selectable="true" name="ModalButton" class="BtnDefault BtnPrimary" style="flex-shrink: 1; flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 12px; padding-right: 41px; padding-bottom: 12px; padding-left: 41px; -unity-font-style: bold; display: flex;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

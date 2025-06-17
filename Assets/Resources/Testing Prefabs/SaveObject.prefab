@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &622306546090398093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6598454221931676350}
+  - component: {fileID: 3289564603740850131}
+  - component: {fileID: 5025183097624170926}
+  - component: {fileID: 8832217819940030090}
+  m_Layer: 0
+  m_Name: SaveObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6598454221931676350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622306546090398093}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.472221, y: 2.1997528, z: 3.2057471}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6868990515460547642}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3289564603740850131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622306546090398093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44e59efa319a594ab7a4dd34f0a22a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LastPOI: 
+  VisitedPOIs: []
+  Version: 
+  ScenarioName: 
+--- !u!114 &5025183097624170926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622306546090398093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7728c67e2e194d46892d48fc853e27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _saveData: {fileID: 3289564603740850131}
+  _inspectableManager: {fileID: 0}
+  canSave: 0
+  OnLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInitialize:
+    m_PersistentCalls:
+      m_Calls: []
+  FreshLoad:
+    m_PersistentCalls:
+      m_Calls: []
+  MovePlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadVisitedPOIs:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadLogs:
+    m_PersistentCalls:
+      m_Calls: []
+  onLoadScenario:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8832217819940030090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622306546090398093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9112792b69b81ae499ddd11aed784cf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hasLoaded: 0
+  _startPauseMenu: {fileID: 0}
+  _splashScreen: {fileID: 0}
+  _restartModal: {fileID: 0}
+  CreateModal:
+    m_PersistentCalls:
+      m_Calls: []
+  RestartScene:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &8477109694759756051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6868990515460547642}
+  - component: {fileID: 2882680146576069489}
+  - component: {fileID: 5855495233225197551}
+  - component: {fileID: 2579646422001334831}
+  m_Layer: 0
+  m_Name: Azure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6868990515460547642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477109694759756051}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6598454221931676350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2882680146576069489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477109694759756051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004ed7826cc0a054db776a8f76dffd5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blobStorageURI: https://varlabcloudsave.azurewebsites.net/core/
+--- !u!114 &5855495233225197551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477109694759756051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c24e5776369604984599f249adc184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedObjects:
+  - TrackedComponent: {fileID: 0}
+    Id: 7b656034-2000-4e91-934b-b73d1525975e
+    LastKnownName: SaveObject
+--- !u!114 &2579646422001334831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477109694759756051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58389e27bebb64740a39454059611ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _azureSaveSystem: {fileID: 2882680146576069489}

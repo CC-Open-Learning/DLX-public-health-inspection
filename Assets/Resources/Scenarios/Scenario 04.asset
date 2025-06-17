@@ -1,0 +1,750 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff30aa6c442eab94d9c387a6245b89ec, type: 3}
+  m_Name: Scenario 04
+  m_EditorClassIdentifier: 
+  ScenarioName: Scenario 04
+  InspectablesAndStates:
+  - InspectableID: Back Kitchen_Arugula #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Arugula #3 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Blast Chiller
+    InspectableState: PantryDefault
+  - InspectableID: Back Kitchen_Broccoli #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Combi Oven
+    InspectableState: KitchenDefault
+  - InspectableID: Back Kitchen_Corn #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Cucumber #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Cucumber #3 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Cutting Board #1
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Cutting Board #2
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Dough Mixer
+    InspectableState: KitchenDefault
+  - InspectableID: Back Kitchen_Garbage Can
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Handwashing Station #4
+    InspectableState: DefaultCompliant
+  - InspectableID: Back Kitchen_Ice Machine
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Jacketed Kettle #1
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Jacketed Kettle #2
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Lettuce #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Lettuce #3 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Olives #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Olives #3 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Peppers #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Peppers #3 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Prep Station Counter #1
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Prep Station Counter #2
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Produce Sink #2
+    InspectableState: BackKitchenDefault
+  - InspectableID: Back Kitchen_Stacked Ovens
+    InspectableState: KitchenDefault
+  - InspectableID: Back Kitchen_Tomatoes #3 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Back Kitchen_Tomatoes #3 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Bar_Business Licence
+    InspectableState: KitchenDefault
+  - InspectableID: Bar_Captain Kidd Rum
+    InspectableState: BarDefault
+  - InspectableID: Bar_Captain Kidd Rum Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_Captain Kidd Rum Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_Champagne Bar Well Left
+    InspectableState: ChampagneBarWell
+  - InspectableID: Bar_Champagne Bar Well Right
+    InspectableState: ChampagneBarWell
+  - InspectableID: Bar_Food Handler Certificate
+    InspectableState: KitchenDefault
+  - InspectableID: Bar_Handwashing Station #1
+    InspectableState: DefaultCompliant
+  - InspectableID: Bar_Ice Scoop Bar Well Left
+    InspectableState: IceScoopBarWell
+  - InspectableID: Bar_Ice Scoop Bar Well Right
+    InspectableState: IceScoopBarWell
+  - InspectableID: Bar_Jakeson Whiskey
+    InspectableState: BarDefault
+  - InspectableID: Bar_Jakeson Whiskey Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_Jakeson Whiskey Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_Lemons Bar Well Left
+    InspectableState: LemonsBarWell
+  - InspectableID: Bar_Lemons Right Bar Well
+    InspectableState: LemonsBarWell
+  - InspectableID: Bar_Liquor Licence
+    InspectableState: KitchenDefault
+  - InspectableID: Bar_MiGuess Blue
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Blue Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Blue Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Green
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Green Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Red
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Red Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Yellow
+    InspectableState: BarDefault
+  - InspectableID: Bar_MiGuess Yellow Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_Olives Bar Well Left
+    InspectableState: OlivesBarWell
+  - InspectableID: Bar_Olives Bar Well Right
+    InspectableState: OlivesBarWell
+  - InspectableID: Bar_Purple Label Whiskey
+    InspectableState: BarDefault
+  - InspectableID: Bar_Purple Label Whiskey Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_Purple Label Whiskey Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_R. Black's Vodka
+    InspectableState: BarDefault
+  - InspectableID: Bar_R. Black's Vodka Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_R. Black's Vodka Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_Sink Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_Sink Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_Tequila
+    InspectableState: BarDefault
+  - InspectableID: Bar_Tequila Well Left
+    InspectableState: BarDefault
+  - InspectableID: Bar_Tequila Well Right
+    InspectableState: BarDefault
+  - InspectableID: Bar_Wine
+    InspectableState: BarDefault
+  - InspectableID: Bathroom #1_Bathroom Sink
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #1_Hand Dryer
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #1_Toilet
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #1_Toilet Paper
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Bathroom Sink
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Hand Dryer
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Toilet
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Toilet Paper
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Broom Closet_Bar Towels
+    InspectableState: KitchenDefault
+  - InspectableID: Broom Closet_Disinfectant
+    InspectableState: Broom Closet Default
+  - InspectableID: Broom Closet_Disinfectant Spray Bottles
+    InspectableState: KitchenDefault
+  - InspectableID: Broom Closet_Mop and Bucket
+    InspectableState: Broom Closet Default
+  - InspectableID: Broom Closet_Paper Towels
+    InspectableState: Broom Closet Default
+  - InspectableID: Broom Closet_Sanitizer
+    InspectableState: Broom Closet Default
+  - InspectableID: Dining_Arugula
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Booth #1
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #10
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #2
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #3
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #4
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #5
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #6
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #7
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #8
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Booth #9
+    InspectableState: BoothCompliant
+  - InspectableID: Dining_Broccoli
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Buffet Plates
+    InspectableState: BuffetTableCompliant
+  - InspectableID: Dining_Buffet Table #1
+    InspectableState: BuffetTableCompliant
+  - InspectableID: Dining_Buffet Table #2
+    InspectableState: BuffetTableCompliant
+  - InspectableID: Dining_Buffet Table #3
+    InspectableState: BuffetTableCompliant
+  - InspectableID: Dining_Buffet Table #4
+    InspectableState: BuffetTableCompliant
+  - InspectableID: Dining_Corn
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Cucumber
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Lettuce
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Olives
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Peppers
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dining_Rice #2
+    InspectableState: Buffet Table Rice Compliant
+  - InspectableID: Dining_Spaghetti #2
+    InspectableState: Buffet Table Spaghetti Compliant
+  - InspectableID: Dining_Table #1
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #2
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #3
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #4
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #5
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #6
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #7
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #8
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Table #9
+    InspectableState: TableCompliant
+  - InspectableID: Dining_Tomatoes
+    InspectableState: Buffet Table Cold Default
+  - InspectableID: Dishwashing_Dirty Dish Drop off
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Dish Shelves #1
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Dish Shelves #2
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Dish Shelves #3
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Dishwasher Exit Table
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Dishwashing Sink
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Garbage Cans #1
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Garbage Cans #2
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Handwashing Station #5
+    InspectableState: DefaultCompliant
+  - InspectableID: Dishwashing_Industrial Dishwasher
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Mop and Bucket
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Rolling Cart #1
+    InspectableState: DishwashingDefault
+  - InspectableID: Dishwashing_Rolling Cart #2
+    InspectableState: DishwashingDefault
+  - InspectableID: Employee Area_Bathroom Trash Can
+    InspectableState: EmployeeBathroomCompliant
+  - InspectableID: Employee Area_Garbage Cans
+    InspectableState: BreakRoomDefault
+  - InspectableID: Employee Area_Hand Washing Station
+    InspectableState: DefaultCompliant
+  - InspectableID: Employee Area_Toilet
+    InspectableState: EmployeeBathroomCompliant
+  - InspectableID: Employee Area_Toilet Paper
+    InspectableState: EmployeeBathroomCompliant
+  - InspectableID: Kitchen_Arugula #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Arugula #1 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Arugula #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Arugula #2 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Broccoli #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Broccoli #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Broccoli #2 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Burger Still Cooking #1
+    InspectableState: Non Compliant Burger
+  - InspectableID: Kitchen_Burger Still Cooking #2
+    InspectableState: Non Compliant Burger
+  - InspectableID: Kitchen_Burger Still Cooking #3
+    InspectableState: Non Compliant Burger
+  - InspectableID: Kitchen_Burger Still Cooking #4
+    InspectableState: Non Compliant Burger
+  - InspectableID: Kitchen_Cabinet
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Cast Iron Skillets #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Cast Iron Skillets #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Corn #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Corn #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Corn #2 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Cucumber #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Cucumber #1 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Cucumber #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Cutting Board #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Cutting Board #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Cutting Board #3
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Cutting Board #4
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Cutting Board #5
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Fryer #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Fryer #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Frying Pans
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Handwashing Station #2
+    InspectableState: DefaultCompliant
+  - InspectableID: Kitchen_Handwashing Station #3
+    InspectableState: DefaultCompliant
+  - InspectableID: Kitchen_Lettuce #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Lettuce #1 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Lettuce #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Lettuce #2 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Microwave Oven
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Olives #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Olives #1 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Olives #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Olives #2 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Peppers #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Peppers #1 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Peppers #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Plating Station Counter #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Plating Station Counter #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Plating Station Counter #3
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Plating Station Plates
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Prep Station Counter #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Prep Station Counter #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Prep Station Counter #3
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Prep Station Counter #4
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Prep Station Counter #5
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Produce Sink #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Range #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Range #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Range #3
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Stacked Ovens
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Tomatoes #1 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Tomatoes #1 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Tomatoes #2 Bottom
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Tomatoes #2 Top
+    InspectableState: Cold Counter Default
+  - InspectableID: Kitchen_Under Deep Fryer
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Plating Station #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Plating Station #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Plating Station #3
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Prep Station #5
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Prep Stations #1 & #4
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Prep Stations #2 & #3
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Rolling Shelf #1
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Rolling Shelf #2
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Under Stack Ovens
+    InspectableState: KitchenDefault
+  - InspectableID: Kitchen_Woks
+    InspectableState: KitchenDefault
+  - InspectableID: Pantry_Almond Flour
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Bags of Chickpeas
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Bags of Flour
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Bags of Lentils
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Bags of Peas
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Bags of Sugar #1
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Bags of Sugar #2
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Baking Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Barbeque Sauce
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Beer Cans
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Black Pepper
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Boxes of Salt
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Brown Sugar
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Chicken Seasoning
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Cinnamon
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Cocoa Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Corn Starch
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Crushed Chilies
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Cumin Seeds Ground
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Curry Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Espresso Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Fish Sauce
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Flour Bin
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Garam Masala
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Garlic Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Ginger Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Ground Coffee
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Mexican Chili Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Oats
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Oil
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Panko
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Pasta Bin
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Powdered Sugar
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Raw Sugar
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Red Wine Vinegar
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Rice Bin
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Rye Flour
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Salad Dressing
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Salsa Jars
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Soy Sauce
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Turmeric Powder
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Under Potato Riser
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Vinegar
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_White Sesame Seeds
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Wine Bottles
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Worcestershire Sauce
+    InspectableState: PantryDefault
+  - InspectableID: Walk-in Cooler_Carrot Boxes
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Evaporator Unit
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Feta Cheese
+    InspectableState: FetaCompliant
+  - InspectableID: Walk-in Cooler_Garlic Bulbs
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Lemon Boxes
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Lettuce Boxes
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Melon Boxes
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Milk Crate
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Onions
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Pepper Boxes
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Raw Fish
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Raw Meat
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Shredded Cheese
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Tomato Boxes
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Tomato Sauce
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Under Eggs and Milk Riser
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Under Potato Riser
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Under Shredded Cheese Riser
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Vegetable Stock
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Freezer_Burger Buns
+    InspectableState: BurgerBunsCompliant
+  - InspectableID: Walk-in Freezer_Cheese Sticks
+    InspectableState: CheeseSticksCompliant
+  - InspectableID: Walk-in Freezer_Chicken Wings
+    InspectableState: ChickenWingsCompliant
+  - InspectableID: Walk-in Freezer_Evaporator Unit
+    InspectableState: Walk-In Freezer Default
+  - InspectableID: Walk-in Freezer_French Fries
+    InspectableState: FriesComplaint
+  - InspectableID: Walk-in Freezer_Ice Cream
+    InspectableState: IceCreamCompliant
+  - InspectableID: Walk-in Freezer_Onion Rings
+    InspectableState: OnionRingsCompliant
+  - InspectableID: Walk-in Freezer_Raw Fish
+    InspectableState: FishCompliant
+  - InspectableID: Walk-in Freezer_Raw Meat
+    InspectableState: MeatCompliant
+  - InspectableID: Back Kitchen_Cold Counter #3 Door Left
+    InspectableState: Cold Counter Door Non-Compliant
+  - InspectableID: Back Kitchen_Cold Counter #3 Door Right
+    InspectableState: Cold Counter Door Compliant
+  - InspectableID: Back Kitchen_Cooler Door Gasket
+    InspectableState: Compliant Gasket
+  - InspectableID: Back Kitchen_Cooler Wall-mounted Thermometer
+    InspectableState: Compliant 4o
+  - InspectableID: Back Kitchen_Free-hanging Thermometer #3
+    InspectableState: FreeHangingThermometerCompliant
+  - InspectableID: Back Kitchen_Freezer Door Gasket
+    InspectableState: NonCompliant Gasket
+  - InspectableID: Back Kitchen_Freezer Wall-mounted Thermometer
+    InspectableState: FreezerWallMountedThermometerCompliant
+  - InspectableID: Back Kitchen_Grease Hood
+    InspectableState: Non Compliant Grease Hood
+  - InspectableID: Back Kitchen_Sanitizer Bucket #1 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Back Kitchen_Sanitizer Bucket #2 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Back Kitchen_Waste Management
+    InspectableState: WasteManagementCompliant
+  - InspectableID: Bar_Ice Bar Well Left
+    InspectableState: Compliant Ice Well
+  - InspectableID: Bar_Ice Bar Well Right
+    InspectableState: NonCompliant Ice Well
+  - InspectableID: Bathroom #1_Dead Rat
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #1_Evidence of Pest Infestation
+    InspectableState: PublicBathroomRatDroppingsNonCompliant
+  - InspectableID: Bathroom #1_Soap Dispenser
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #1_Wastepaper Basket
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Dead Rat
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Evidence of Pest Infestation
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Soap Dispenser
+    InspectableState: PublicBathroomCompliant
+  - InspectableID: Bathroom #2_Wastepaper Basket
+    InspectableState: PublicBathroomWasteBasketNonCompliant
+  - InspectableID: Broom Closet_Bags of Potatoes
+    InspectableState: CompliantBroomCloset
+  - InspectableID: Broom Closet_Single-service Containers
+    InspectableState: NonCompliantBroomCloset
+  - InspectableID: Dining_Alfredo
+    InspectableState: Buffet Table Alfredo Compliant
+  - InspectableID: Dining_Gumbo
+    InspectableState: Buffet Table Gumbo Compliant
+  - InspectableID: Dining_Mushroom and Shrimp
+    InspectableState: Buffet Table Mushroom And Shrimp Non-Compliant
+  - InspectableID: Dining_Noodles
+    InspectableState: Buffet Table Noodle Compliant
+  - InspectableID: Dining_Plated Dinner
+    InspectableState: PlatedDinnerCompliant
+  - InspectableID: Dining_Rice #1
+    InspectableState: Buffet Table Rice Non-Compliant
+  - InspectableID: Dining_Spaghetti #1
+    InspectableState: Buffet Table Spaghetti Compliant
+  - InspectableID: Dishwashing_Step Ladder
+    InspectableState: StepLadderNonCompliant
+  - InspectableID: Dishwashing_Three Compartment Sink
+    InspectableState: Compliant Three Compliant Sink
+  - InspectableID: Employee Area_Bags of Potatoes
+    InspectableState: EmployeeAreaCompliant
+  - InspectableID: Employee Area_Dead Rat
+    InspectableState: BreakRoomDefault
+  - InspectableID: Employee Area_Evidence of Pest Infestation
+    InspectableState: BreakRoomCockroachesNonCompliant
+  - InspectableID: Employee Area_Wastepaper Basket
+    InspectableState: NonCompliantWastepaperBasket
+  - InspectableID: Kitchen_Ash Tray
+    InspectableState: Non Compliant Ash Tray
+  - InspectableID: Kitchen_Cold Counter #1 Door Left
+    InspectableState: Cold Counter Door Compliant
+  - InspectableID: Kitchen_Cold Counter #1 Door Right
+    InspectableState: Cold Counter Door Compliant
+  - InspectableID: Kitchen_Cold Counter #2 Door Left
+    InspectableState: Cold Counter Door Compliant
+  - InspectableID: Kitchen_Cold Counter #2 Door Right
+    InspectableState: Cold Counter Door Non-Compliant
+  - InspectableID: Kitchen_Cracked Tile
+    InspectableState: Compliant Tile (Not Present)
+  - InspectableID: Kitchen_Free-hanging Thermometer #1
+    InspectableState: FreeHangingThermometerCompliant
+  - InspectableID: Kitchen_Free-hanging Thermometer #2
+    InspectableState: FreeHangingThermometerNonCompliant8
+  - InspectableID: Kitchen_Grease Hood
+    InspectableState: Non Compliant Grease Hood
+  - InspectableID: Kitchen_Industrial Blender
+    InspectableState: BlenderNonCompliant
+  - InspectableID: Kitchen_RTE Burger
+    InspectableState: Compliant Burger
+  - InspectableID: Kitchen_Sanitizer Bucket #1 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Kitchen_Sanitizer Bucket #2 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Kitchen_Sanitizer Bucket #3 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Kitchen_Sanitizer Bucket #4 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Kitchen_Sanitizer Bucket #5 - Chlorine
+    InspectableState: Compliant Test Strips
+  - InspectableID: Pantry_Bag of Potatoes
+    InspectableState: Compliant Potatoes
+  - InspectableID: Pantry_Black Beans Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Chickpeas Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Cleaning Spray
+    InspectableState: NonCompliant Cleaning Spray (Present)
+  - InspectableID: Pantry_Coconut Milk Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Cracked Tile
+    InspectableState: NonCompliant Cracked Tile
+  - InspectableID: Pantry_Dead Rat
+    InspectableState: Compliant Dead Rat
+  - InspectableID: Pantry_Evidence of Pest Infestation
+    InspectableState: Compliant Pest Infestation
+  - InspectableID: Pantry_Green Beans Cans
+    InspectableState: Non Compliant Can Dented
+  - InspectableID: Pantry_Ground Coffee Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Kernel Corn Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Mushroom Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Pickles
+    InspectableState: Compliant Pickles
+  - InspectableID: Pantry_Red Beans Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Rice Buckets
+    InspectableState: Non Compliant Rice Bucket
+  - InspectableID: Pantry_Tomato Cans
+    InspectableState: Compliant Can
+  - InspectableID: Pantry_Under Shelf #1
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Under Shelf #2
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Under Shelf #3
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Under Shelf #4
+    InspectableState: PantryDefault
+  - InspectableID: Pantry_Under Shelf #5
+    InspectableState: PantryDefault
+  - InspectableID: Walk-in Cooler_Bag of Potatoes
+    InspectableState: Compliant Potatoes
+  - InspectableID: Walk-in Cooler_Dead Rat
+    InspectableState: Compliant Rat
+  - InspectableID: Walk-in Cooler_Eggs
+    InspectableState: Compliant Brown Eggs
+  - InspectableID: Walk-in Cooler_Evidence of Pest Infestation
+    InspectableState: Compliant Pest Infestation
+  - InspectableID: Walk-in Cooler_Free-hanging Thermometer
+    InspectableState: FreeHangingThermometerNonCompliant8
+  - InspectableID: Walk-in Cooler_Raw Chicken
+    InspectableState: Raw Chicken Vegetable Compliant Fridge Temp Non-Compliant
+  - InspectableID: Walk-in Cooler_Shelf #2
+    InspectableState: NonCompliant Shelf
+  - InspectableID: Walk-in Cooler_Under Sheet Pan Rack #1
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Under Sheet Pan Rack #2
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Under Shelf #1
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Under Shelf #2
+    InspectableState: Cooler Default
+  - InspectableID: Walk-in Cooler_Vegetables
+    InspectableState: Raw Chicken Vegetable Compliant Fridge Temp Non-Compliant
+  - InspectableID: Walk-in Cooler_Wild Game Duck
+    InspectableState: Compliant Duck
+  - InspectableID: Walk-in Freezer_Burger Patties
+    InspectableState: Compliant Patties
+  - InspectableID: Walk-in Freezer_Cracked Tile
+    InspectableState: NonCompliant TIle
+  - InspectableID: Walk-in Freezer_Free-hanging Thermometer
+    InspectableState: FreezerFreeHangingThermometerCompliant

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9485b727edbe26646846364ec48b50b9, type: 3}
+  m_Name: PhotoDiscardWarning
+  m_EditorClassIdentifier: 
+  ModalName: Photo Discard Warning
+  ModalTitle: Warning
+  ContentTitle: Discard Photo?
+  Content: Photo taken will not be saved if you exit.
+  ContentFontSize: 26
+  FooterText: 
+  FooterIcon: {fileID: 0}
+  ConfirmationToggleText: 
+  SecondaryConfirmationToggleText: 
+  ConfirmationToggleFontSize: 24
+  PrimaryBtnText: Discard
+  SecondaryBtnText: Cancel
+  PrimaryBtnColor: {r: 1, g: 0.8000001, b: 0.20000002, a: 1}
+  SecondaryBtnColor: {r: 0.882353, g: 0.882353, b: 0.882353, a: 1}
+  PrimaryBtnTxtColor: {r: 0, g: 0, b: 0, a: 1}
+  SecondaryBtnTxtColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 1}
+  BtnFontSize: 20
+  PrimaryBtnWidth: 144
+  ModalTitleAlign: 1
+  ContentTitleAlign: 2
+  ContentAlign: 1
+  FooterAlign: 0
+  ConfirmationToggleAlign: 0
+  SecondaryConfirmationToggleAlign: 0
+  IsPrimaryBtnEnabled: 1
+  IsPrimaryBtnClickable: 1
+  IsSecondaryBtnEnabled: 1
+  IsCloseBtnEnabled: 0
+  BaseWindow: 0
+  IsBackgroundDimmed: 1
+  IsConfirmationToggleEnabled: 0
+  IsSecondaryConfirmationToggleEnabled: 0
+  ModalWidth: 708
+  ModalHeight: 310
+  CustomBtnUSSClasses:
+  - elementName: PrimaryBtn
+    className: BtnPrimary
+  - elementName: SecondaryBtn
+    className: BtnSecondary1

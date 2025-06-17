@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/USS/Editor/InspectableStateEditor.uss?fileID=7433441132597879392&amp;guid=ac43a2a2b34018144864cb3263770155&amp;type=3#InspectableStateEditor" />
+    <ui:VisualElement name="ve_window" class="state-viewer-root" style="color: rgb(88, 88, 88); height: 100%;">
+        <ui:VisualElement name="Header" class="inspectable-viewer-label" style="flex-grow: 0; align-items: stretch; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; min-height: 80px; max-height: 80px;">
+            <ui:Label tabindex="-1" text="Inspectable State Editor" parse-escape-sequences="true" display-tooltip-when-elided="true" name="lbl_title" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 20px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 5px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
+            <ui:DropdownField label="Load File" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="ddf_loadFile" class="load-file-dropdown inspectable-viewer-label inspectable-viewer-popup-field__input" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); align-self: auto; align-items: center; justify-content: flex-start; color: rgb(251, 251, 251); flex-grow: 0;" />
+        </ui:VisualElement>
+        <ui:ScrollView name="sv_states" style="background-color: rgb(56, 56, 56); border-left-width: 0; border-right-width: 0; border-top-width: 2px; border-bottom-width: 0; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255);" />
+    </ui:VisualElement>
+    <ui:VisualElement name="ve_footer" class="white-background" style="height: 70px;">
+        <ui:TextField label="File Name:" name="tf_fileName" class="file-text-input file-entry-textfield file-text-label inspectable-viewer-popup-field__input" style="height: 50%; align-self: auto; align-items: center; margin-left: 10px; padding-left: 1px;" />
+        <ui:VisualElement name="ve_btnContainer" class="inspectable-viewer-button flex-row-items" style="height: 50%; align-items: stretch; justify-content: center;">
+            <ui:Button text="Save Scenario" parse-escape-sequences="true" display-tooltip-when-elided="true" name="btn_saveScenario" style="flex-grow: 1;" />
+            <ui:Button text="Apply Scenario" parse-escape-sequences="true" display-tooltip-when-elided="true" name="btn_ApplyScenario" style="flex-grow: 1; word-spacing: 0; min-width: 50%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

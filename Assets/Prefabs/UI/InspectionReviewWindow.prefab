@@ -1,0 +1,329 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &802690485991893732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7069549040257077249}
+  - component: {fileID: 8384190278136828423}
+  - component: {fileID: 8904891260223662592}
+  - component: {fileID: 3155213149051962233}
+  - component: {fileID: 6983424293883568843}
+  - component: {fileID: 6925858181538508221}
+  - component: {fileID: 2745019707918186623}
+  m_Layer: 5
+  m_Name: InspectionReviewWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7069549040257077249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8384190278136828423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 92ce02b0d65b84ef3b5c0bfd994fc558, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 84bf58b813ba0934896600862383b504,
+    type: 3}
+  m_SortingOrder: 2
+--- !u!114 &8904891260223662592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff524734f5486246b7ad7e9ddfdd60a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _elementNames: {fileID: 11400000, guid: d023c6a92344ea04694f6052a5d9a083, type: 2}
+  _galleryBuilder: {fileID: 3155213149051962233}
+  _activityLogBuilder: {fileID: 6983424293883568843}
+  _inspectionLogBuilder: {fileID: 2745019707918186623}
+  _progressBarBuilder: {fileID: 6925858181538508221}
+  _inspectionReviewDoc: {fileID: 8384190278136828423}
+  _toolbarDoc: {fileID: 0}
+  DownloadEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6983424293883568843}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ActivityLogBuilder, VARLab.PublicHealth
+        m_MethodName: ExportActivityLog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ImageManager, VARLab.PublicHealth
+        m_MethodName: ExportAllPhotos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3155213149051962233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57e1668cbcd8e242b5feac512d1ac3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inspectableManager: {fileID: 0}
+  _imageManager: {fileID: 0}
+  _inspectionReviewWindow: {fileID: 8384190278136828423}
+  _mainGallery: {fileID: 9197481963319205126, guid: ae5c0242ed4645f479e6c6d3ab55d4c9,
+    type: 3}
+  _galleryRow: {fileID: 9197481963319205126, guid: cb414ff1d675d114bbfeaef179803bab,
+    type: 3}
+  _galleryPicture: {fileID: 9197481963319205126, guid: 896fb4cbebd046a43ae3a0ecffb1b0dd,
+    type: 3}
+  _compliantPhotoDelete: {fileID: 11400000, guid: db02fda4b5b1b8f43bf913a8fba657fd,
+    type: 2}
+  _noncompliantPhotoDelete: {fileID: 11400000, guid: 5229563aa6615b045a753a99c3125b39,
+    type: 2}
+  _elementNames: {fileID: 11400000, guid: 51c8f711c60368a40832e2feff01227a, type: 2}
+  DeletePhoto:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.InspectableManager, VARLab.PublicHealth
+        m_MethodName: ReEnablePhoto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SaveGallery:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ImageManager, VARLab.PublicHealth
+        m_MethodName: TriggerPhotoSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CreateToast:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ToastManager, VARLab.PublicHealth
+        m_MethodName: DisplayToast
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  UpdateProgress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6925858181538508221}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ProgressBarBuilder, VARLab.PublicHealth
+        m_MethodName: UpdateNonComplianceText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DeleteInspection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.InspectableManager, VARLab.PublicHealth
+        m_MethodName: RemoveInspection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CreateModal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ModalPopupBuilder, VARLab.PublicHealth
+        m_MethodName: HandleDisplayModal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ImagePopUp: {fileID: 0}
+--- !u!114 &6983424293883568843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa97622b185f4e239d4553005b0e7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activityLogManager: {fileID: 0}
+  _inspectionReviewWindow: {fileID: 8384190278136828423}
+  _mainActivityLog: {fileID: 9197481963319205126, guid: fdc374a20ef914b6b85a87a95f3570bf,
+    type: 3}
+  _elementNames: {fileID: 0}
+--- !u!114 &6925858181538508221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f9c35139aafa742bfa9a955f900fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inspectableManager: {fileID: 0}
+  _poiManager: {fileID: 0}
+  _timerManager: {fileID: 0}
+  _progressBarUI: {fileID: 8384190278136828423}
+  IsOpen: 0
+--- !u!114 &2745019707918186623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802690485991893732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 155ba99888ef15f4c8056f463a53b6ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _elementNames: {fileID: 11400000, guid: 758ca96994914c444a14613949fbf55d, type: 2}
+  _inspectableManager: {fileID: 0}
+  _inspectionReviewWindow: {fileID: 8384190278136828423}
+  _mainInspectionLog: {fileID: 0}
+  _InspectionLogRow: {fileID: 0}
+  _foldout: {fileID: 9197481963319205126, guid: 8cb873a4b7a46844ebaebba334a4a9fd,
+    type: 3}
+  _deletionWithPhoto: {fileID: 11400000, guid: 0983af20d733ce047ba8793748fb68d4, type: 2}
+  _deletionWithoutPhoto: {fileID: 11400000, guid: 764cdd94365371b49abe04ac28e3295e,
+    type: 2}
+  _photo: {fileID: 2800000, guid: b170d7f9e6d3d1641b5404a9f833bbd7, type: 3}
+  _visual: {fileID: 2800000, guid: 60b27b6a5e122d04ca3dce18b9b744ab, type: 3}
+  _IRThermometer: {fileID: 2800000, guid: 0ec16505aaa1d134fafcba45c0bdc76c, type: 3}
+  _probeThermometer: {fileID: 2800000, guid: 078309a92cad5384a9defeda2c07bcb7, type: 3}
+  _deleteIcon: {fileID: 2800000, guid: 3eed5301ac38f5346b187e5e623175ea, type: 3}
+  _missingPhoto: {fileID: 2800000, guid: dad7a11f7d5a29d41bd0741fd3860ef4, type: 3}
+  _compliantIcon: {fileID: 0}
+  _nonCompliantIcon: {fileID: 0}
+  CreateToast:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ToastManager, VARLab.PublicHealth
+        m_MethodName: DisplayToast
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CreateModal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.ModalPopupBuilder, VARLab.PublicHealth
+        m_MethodName: HandleDisplayModal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DeleteInspection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VARLab.PublicHealth.InspectableManager, VARLab.PublicHealth
+        m_MethodName: RemoveInspection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ImagePopUp: {fileID: 0}

@@ -1,0 +1,410 @@
+using UnityEngine;
+using NUnit.Framework;
+using VARLab.PublicHealth;
+using Moq;
+using UnityEditor;
+using UnityEngine.TestTools;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+///     This class contains all the tests for the NonComplianceManager. It will test the creation of the logs and ensure that they are added to the dictionary correctly. 
+///     Tests covered:
+///         - NonComplianceLogCreatedCorrectly
+///         - NonComplianceLogWithNoToolSelected
+///         - EnsureDuplicateLogIsNotAdded
+///         - EnsureMultipleDifferentLogsCanBeCompletedOnOneObject
+///         - EnsureLogUpdatesCorrectly
+/// </summary>
+public class NonComplianceManagerTests : MonoBehaviour
+{
+    //Constants
+    const string InspectableObjectName = "Inspectable Object";
+    const string POIName = "Test POI";
+    const string VisualInspection = "Visual Inspection"; 
+    const string NoReading = "------";
+    const string CameraReading = "View Photo";
+    const string NoPhotoReading = "Not Available";
+
+    //GameObjects
+    GameObject  _nonComplianceManagerGameObject;
+    GameObject  _imageManagerGameObject;
+    GameObject  _inspectableGameObject; 
+
+    GameObject saveObj;
+    Mock<ICloudSaving> mockCloudSave;
+    SaveDataSupport saveSupp;
+
+    TimerManager timerManager;
+
+
+    /// <summary>
+    ///     One time setup to be ran before all the tests, this is needed to handle the timer manager singleton.
+    /// </summary>
+    [OneTimeSetUp]
+    public void OneTimeSetup ()
+    {
+        //Check to see if the current instance is non-null. This can happen when all the tests are ran since an instance of timer manager will exist due to it being a singleton.
+        if (TimerManager.Instance == null)
+            timerManager = new GameObject().AddComponent<TimerManager>();
+
+        //If the instance is null then we need to create a new instance of the timer manager
+        else if (timerManager == null)
+            timerManager = TimerManager.Instance;
+    }
+
+    /// <summary>
+    ///     Setup to be ran before every test 
+    /// </summary>
+    [SetUp]
+    public void RunBeforeEveryTest()
+    {
+        //setup the image manager object
+        _imageManagerGameObject = new GameObject();
+        _imageManagerGameObject.AddComponent<ImageManager>();
+
+        //setup the non compliance manager object
+        _nonComplianceManagerGameObject = new GameObject();
+        _nonComplianceManagerGameObject.AddComponent<NonComplianceManager>();
+        _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>().OnNonComplianceLogChanged = new UnityEngine.Events.UnityEvent<Dictionary<string,List<NonComplianceLog>>>();
+
+        //setup the inspectable object
+        _inspectableGameObject = new GameObject();
+        var inspectableObject = _inspectableGameObject.AddComponent<InspectableObject>();
+        inspectableObject.InspectableObjectName = InspectableObjectName;
+        inspectableObject.Location = POIName;
+        
+        //setup the currentObjState for the inspectable object
+        var inspectableObjectData = ScriptableObject.CreateInstance<InspectableObjectData>();
+        inspectableObjectData.IRTemp = 20; 
+        inspectableObjectData.ProbeTemp = 20;
+
+        //assign the currentObjState to the inspectable object
+        inspectableObject.CurrentObjState = inspectableObjectData;
+        inspectableObject.AllScenarioStates = new List<InspectableObject.States>
+        {
+            new InspectableObject.States(_inspectableGameObject, inspectableObjectData)
+        };
+
+        //save obj
+        saveObj = new GameObject();
+        mockCloudSave = new Mock<ICloudSaving>();
+        saveSupp = saveObj.AddComponent<SaveDataSupport>();
+        saveSupp.CloudSave = mockCloudSave.Object;
+
+        //setup the save data support
+        var so = new SerializedObject(saveObj.GetComponent<SaveDataSupport>());
+        so.FindProperty("_saveData").objectReferenceValue = saveObj.AddComponent<SaveData>();
+        so.ApplyModifiedProperties();
+
+        //setup the non compliance manager
+        _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>().OnNonComplianceLogChanged.AddListener(saveSupp.SaveNonComplianceLog);
+
+
+    }
+
+
+    /// <summary>
+    ///     Test creating a test log and ensuring it is added to the dictionary correctly.
+    /// </summary>
+    [Test]
+    public void NonComplianceLogCreatedCorrectly ()
+    {
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+
+        var log = nonComplianceManager.NonComplianceLogs[POIName][0];
+
+        //Assert
+        Assert.AreEqual(1, nonComplianceManager.NonComplianceLogs.Count);
+        Assert.AreEqual(InspectableObjectName, log.Item);
+        
+        //NOTE: This isn't a test for ensuring the photo exists. It's just checking that the log is correct with a camera selected 
+        Assert.AreEqual(ToolStringsSO.LogPhotoString, log.ToolUsed);
+        Assert.AreEqual(ToolStringsSO.LogPhotoAvailableString, log.Reading);
+        //Assert.AreEqual(null, log.Photo);
+
+    }
+
+    /// <summary>
+    ///     Try to add two of the same logs and ensure that only one log is added. 
+    /// </summary>
+    [Test] 
+    public void NonComplianceLogWithNoToolSelected ()
+    {
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.NoSelection, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+
+        var log = nonComplianceManager.NonComplianceLogs[POIName][0];
+
+        //Assert
+        //log should only have one entry
+        Assert.AreEqual(1, nonComplianceManager.NonComplianceLogs.Count);
+
+        //the entry should have the correct item name
+        Assert.AreEqual(InspectableObjectName, log.Item);
+
+        //the entry should have the correct tool name, since no tool select we should recieve a visual inspection string 
+        Assert.AreEqual(ToolStringsSO.LogVisualString, log.ToolUsed);
+
+        //the entry should have the correct reading
+        Assert.AreEqual(NoReading, log.Reading);
+
+        //the entry should have no photo
+        //Assert.AreEqual(null, log.Photo);
+    }
+
+    /// <summary>
+    ///     This test ensures that multiple identical logs can not be added to the dictionary
+    /// </summary>
+    [Test] 
+    public void EnsureDuplicateLogIsNotAdded ()
+    {
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+
+        //Assert
+        //log should only have one entry
+        Assert.AreEqual(1, nonComplianceManager.NonComplianceLogs.Count);
+    }
+
+
+    /// <summary>
+    ///     This test ensures that multiple logs can be added to the dictionary on the same object 
+    /// </summary>
+    [Test]
+    public void EnsureMultipleDifferentLogsCanBeCompletedOnOneObject ()
+    {
+
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionCameraEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+        var inspectionIREvidence = new Evidence(VARLab.PublicHealth.Tools.IRThermometer, false, inspectableObject);
+        var inspectionProbeEvidence = new Evidence(VARLab.PublicHealth.Tools.ProbeThermometer, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionCameraEvidence);
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionIREvidence);
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionProbeEvidence);
+
+        //Assert
+        //log should have 3 entries
+        Assert.AreEqual(3, nonComplianceManager.NonComplianceLogs[POIName].Count);
+    }
+
+    /// <summary>   
+    ///     This test ensures that the noncompliance logs are deleted correctly when the trigger delete is called.
+    /// </summary>
+    [Test]
+    public void EnsureLogIsDeletedCorrectly()
+    {
+        //Delete a log from the noncompliance manager and ensure that it is removed from the dictionary
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionCameraEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+        var inspectionIREvidence = new Evidence(VARLab.PublicHealth.Tools.IRThermometer, false, inspectableObject);
+        var inspectionProbeEvidence = new Evidence(VARLab.PublicHealth.Tools.ProbeThermometer, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionCameraEvidence);
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionIREvidence);
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionProbeEvidence);
+
+        //Create a log struct
+        var log = new NonComplianceLog
+        {
+            Item = inspectableObject.InspectableObjectName,
+            //Photo = null
+        };
+
+        //Add the log to the dictionary
+        nonComplianceManager.NonComplianceLogs[POIName].Add(log);
+
+        //Assert
+        //log should have 4 entries
+        Assert.AreEqual(4, nonComplianceManager.NonComplianceLogs[POIName].Count);
+
+        //Act
+        nonComplianceManager.RemoveLogFromDictionary(POIName, log);
+
+        //Assert
+        //log should have 3 entries
+        Assert.AreEqual(3, nonComplianceManager.NonComplianceLogs[POIName].Count);
+
+    }
+
+    /// <summary>
+    ///     This test ensures the noncompliance log key is successfully deleted when it has no more logs
+    /// </summary>
+    [Test]
+    public void EnsureKeyIsDeletedCorrectly() {
+        // Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.ProbeThermometer, false, inspectableObject);
+
+
+        var log = new NonComplianceLog {
+            Item = inspectableObject.InspectableObjectName,
+            ToolUsed = "Probe",
+            Reading = "20.0°C"
+        };
+
+        // Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+
+        // Assert
+        // NonComplianceLogs should have 1 entry
+        Assert.AreEqual(1, nonComplianceManager.NonComplianceLogs.Count);
+
+        // Act
+        nonComplianceManager.RemoveLogFromDictionary(POIName, log);
+
+        // Assert
+        // NonComplianceLogs should have 0 entries
+        Assert.AreEqual(0, nonComplianceManager.NonComplianceLogs.Count);
+    }
+
+    /// <summary>
+    ///     This test ensures that a "Camera" log correctly updates to "Not Available". The
+    ///     method being tested here is connected to the GalleryBuilder DeletePhoto event
+    /// </summary>
+    [Test]
+    public void EnsureCameraLogUpdatesCorrectly() {
+        // Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence );
+        nonComplianceManager.UpdateCameraLog(inspectableObject.InspectableObjectName);
+
+        var log = nonComplianceManager.NonComplianceLogs[POIName][0];
+
+        //Assert
+        Assert.AreEqual(InspectableObjectName, log.Item);
+        Assert.AreEqual(ToolStringsSO.LogPhotoUnavailableString, log.Reading); // check why this is not working
+    }
+
+    /// <summary>
+    ///     This test ensures that the noncompliance logs are saved correctly when the trigger save is called.
+    /// </summary>
+    /// <returns></returns>
+    [UnityTest] 
+    public IEnumerator SaveIsCalledAfterNonComplianceIsLogged()
+    {
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+        saveSupp.canSave = true;
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+        yield return null;
+
+        //Assert
+        mockCloudSave.Verify(x => x.Save(), Times.Once);
+        Assert.IsNotEmpty(saveObj.GetComponent<SaveData>().NonComplianceLogs);
+    }
+
+
+
+    /// <summary>
+    ///     This test ensures that the noncompliance logs are loaded correctly when the trigger load is called.
+    /// </summary>
+    /// <returns></returns>
+    [UnityTest] 
+    public IEnumerator OnLoadNonComplianceLogIsRepopulated()
+    {      
+        //Arrange
+        mockCloudSave.Setup(x => x.LoadSuccess).Returns(true); 
+
+        //Act
+        saveSupp.OnLoad.AddListener(saveSupp.LoadNonComplianceLog);
+        saveSupp.onLoadNonCompliances.AddListener(_nonComplianceManagerGameObject.GetComponent<NonComplianceManager>().OnLoadSetNonCompliances);
+        var sdDictionary = saveObj.GetComponent<SaveData>().NonComplianceLogs = new();
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();  
+
+        //add a test log to the dictionary
+        var log = new NonComplianceLog
+        {
+            Item = InspectableObjectName,
+        };
+
+        //add the log to the dictionary
+        sdDictionary.Add(POIName, new System.Collections.Generic.List<NonComplianceLog> { log });
+
+        yield return saveSupp.TriggerLoad();
+
+        //Assert
+        Assert.IsNotEmpty(nonComplianceManager.NonComplianceLogs);
+        Assert.AreEqual(sdDictionary, nonComplianceManager.NonComplianceLogs);
+    }
+
+
+    /// <summary>
+    ///     Test to ensure that find non-compliance returns the correct log if found in the dictionary.
+    /// </summary>
+    [UnityTest]
+    public IEnumerator FindNonComplianceLogReturnsCorrectLog()
+    {
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+
+        //Act
+        //Create a log
+        var log = new NonComplianceLog
+        {
+            Item = InspectableObjectName,
+            ToolUsed = "Photo"
+        };
+        //Add the log to the dictionary
+        nonComplianceManager.NonComplianceLogs.Add(POIName, new System.Collections.Generic.List<NonComplianceLog> { log });
+        yield return null;
+
+        //Assert
+        Assert.AreEqual(log, nonComplianceManager.TryToFindNonComplianceLog(InspectableObjectName, POIName));
+    }
+
+
+    /// <summary>
+    ///     Test to ensure that find non-compliance returns null if the log is not found in the dictionary.
+    /// </summary>
+    /// <returns></returns>
+    [UnityTest]
+    public IEnumerator FindNonComplianceLogReturnsNullIfLogNotFound()
+    {
+        //Arrange
+        var nonComplianceManager = _nonComplianceManagerGameObject.GetComponent<NonComplianceManager>();
+        var inspectableObject = _inspectableGameObject.GetComponent<InspectableObject>();
+        var inspectionEvidence = new Evidence(VARLab.PublicHealth.Tools.Camera, false, inspectableObject);
+
+        //Act
+        nonComplianceManager.CreateNonComplianceLog(inspectableObject, inspectionEvidence);
+        yield return null;
+
+        //Assert
+        Assert.IsNull(nonComplianceManager.TryToFindNonComplianceLog(POIName, "Not Found"));
+    }
+
+}

@@ -1,0 +1,35 @@
+#FoldoutContainer .unity-foldout__toggle > .unity-toggle__input:checked > .unity-label {
+    color: rgb(255, 192, 9);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-left-color: rgb(255, 192, 9);
+    border-right-color: rgb(255, 192, 9);
+    border-top-color: rgb(255, 192, 9);
+    border-bottom-color: rgb(255, 192, 9);
+}
+
+#FoldoutContainer .unity-foldout__content {
+    margin: 0;
+    padding: 0;
+}
+
+#FoldoutContainer .unity-foldout__toggle {
+    height: 64px;
+    margin: 0;
+    padding-left: 63px;
+}
+
+#FoldoutContainer .unity-foldout__checkmark {
+    -unity-background-image-tint-color: white;
+}
+
+#FoldoutContainer .unity-label {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    font-size: 18px;
+}

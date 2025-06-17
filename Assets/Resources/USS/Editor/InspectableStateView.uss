@@ -1,0 +1,162 @@
+/* Containers */
+.root {
+}
+
+.heading-container {
+    flex-grow: 1;
+    max-height: 120px;
+    min-height: 120px;
+    width: 100%;
+    border-bottom-width: 2px;
+    border-color: white;
+}
+
+.scroll-view-container {
+    flex-grow: 1; 
+    max-height: 70%; 
+}
+
+.load-file-dropdown-container {
+    width: 100%;
+    padding: 5px;
+    border-color: white;
+    margin-bottom: 5px;
+    max-height: 40px; 
+    min-height: 40px;
+}
+
+.footer-container {
+    max-height: 80px;
+    min-height: 80px;
+    border-top-width:2px;
+    border-color: white;
+    background-color: white;    
+}
+
+.buttons-container {
+    position: relative; 
+    bottom: 0%; 
+    width: 100%;
+    height: 60%;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    border-left-width: 5px; 
+    border-right-width: 5px;
+}
+
+.file-menu-container {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    align-self: flex-end;
+    background-color: white;
+    padding-top: 2px;
+    max-height: 12%;
+    flex-grow : 1;
+}
+
+.file-name-container {
+    height: 40%; 
+    width: 100%;
+    flex-direction: row;
+}
+
+
+
+.load-file-foldout {
+	width: 100%;
+	justify-content: center;
+    color: white;
+    font-size: 20px;
+    padding-right: 15px; 
+    padding-left: 15px;  
+    padding-top: 2px;
+}
+
+.load-file-button {
+    position:relative;
+    margin: 3px;
+    margin-right: 12px;
+    
+}
+
+.heading-label {
+    border-color: rgb(250,249,246);
+    border-width: 2px; 
+    border-radius: 10px; 
+
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    -unity-text-align: middle-center; 
+    -unity-font-style: bold; 
+    font-size: 20px;
+}
+
+.inspectable-dropdown {
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    -unity-text-align: middle-left;  
+    font-size: 18px; 
+    color: red;
+}
+
+.update-inspectable-manager-note {
+    padding-top: 5px; 
+	padding-bottom: 10px;
+	-unity-text-align: middle-center; 
+    -unity-font-style: bold;
+    font-size: 20px;
+	color: yellow;
+}
+
+.update-inspectable-manager-button {
+	margin-top: 5px; 
+	margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+	-unity-text-align: middle-center; 
+	-unity-font-style: italic;
+	-unity-font-style: bold;
+	font-size: 18px; 
+    height: 50px; 
+    align-content: center;
+}
+
+.create-text-file-button{
+    width: 50%;
+    margin: 3px;
+}
+
+.load-text-file-button {
+    width: 50%;
+    margin: 3px;
+    position: relative;
+    bottom: 0%;
+}
+
+.file-menu-text-field {
+    width: 75%;
+    padding-right: 5px;
+}
+
+.scroll-view {
+}
+
+.file-name-label {
+    -unity-text-align: middle-center; 
+	-unity-font-style: bold; 
+	font-size: 20px; 
+    justify-content: flex-start;
+    color: black;
+    width: 25%;
+    padding-left: 5px;
+} 
+
+.new-items {
+    color: yellow;
+}
+
+.new-drop {
+    background-color: yellow;
+}

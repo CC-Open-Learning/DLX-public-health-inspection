@@ -1,0 +1,172 @@
+/*
+ * 2024-01-26:
+ * This file contains the workflow for batch deletion of non-compliant logs.
+ * That functionality was determined incorrect during W24-2, and removed with PHI-405
+using System.Collections.Generic;
+using System.Globalization;
+using UnityEngine;
+
+namespace VARLab.PublicHealth
+{
+    /// <summary>
+    ///     This is the manager for the non-compliance log. This class contains all the logic for creating the log and adding it to a dictionary. 
+    ///     The dictionary is used to display the logs in the inspection window. The key is the location ID and the value is a list of NonComplianceLogs
+    ///     No duplicate logs are allowed in the list and the list is created if the key does not exist.
+    /// </summary>
+    public class NonComplianceManager : MonoBehaviour
+    {
+        [SerializeField] private SaveDataSupport _saveSupp;
+
+        //const strings + getters
+        private const string _cameraTool = "Photo";
+        public string CameraTool { get { return _cameraTool; } }
+
+        private const string _infraredTool = "Infrared";
+        public string InfraredTool { get { return _infraredTool; } }
+
+        private const string _probeTool = "Probe";
+        public string ProbeTool { get { return _probeTool; } }
+
+        private const string _visualTool = "Visual";
+        public string VisualTool { get { return _visualTool; } }
+
+        public int NonComplianceCount;
+
+        /// <summary>
+        ///     Image manager to get the photo from the inspectable object
+        /// </summary>
+        private ImageManager _imageManager;
+
+        /// <summary>
+        ///     Dictionary of NonComplianceLogs. The key is the location ID and the value is a list of NonComplianceLogs
+        /// </summary>
+        public Dictionary<string, List<NonComplianceLog>> NonComplianceLogs;
+
+        public void Awake()
+        {
+            //Create a new dictionary
+            NonComplianceLogs = new();
+        }
+
+        /// <summary>
+        ///     Event listener. This is called when an inspection is made. <see cref="InspectionWindow.LogCompliantEvent"/>
+        ///     This method will create a log if the inspection is not compliant based on the tool used and the inspectable object.
+        /// </summary>
+        /// <param name="tools">The tool that was used in the inspection</param>
+        /// <param name="inspectableObject">The object that was inspected</param>
+        public void CreateNonComplianceLog(Tools tools, InspectableObject inspectableObject)
+        {
+            //If the user selection is compliant then return
+            if (inspectableObject.UserSelectionCompliant == true)
+                return;
+
+            //create a new NonComplianceLog. The photo is set to null by default.
+            NonComplianceLog nonComplianceLog = new()
+            {
+                Item = inspectableObject.InspectableObjectName,
+                //Photo = null
+            };
+
+            //switch statement to determine which tool was used and populate the NonComplianceLog struct accordingly
+            switch (tools)
+            {
+                case Tools.Camera:
+                    nonComplianceLog.ToolUsed = _cameraTool;
+                    nonComplianceLog.Reading = " -- ";
+                    break;
+
+                case Tools.IRThermometer:
+                    nonComplianceLog.Reading = inspectableObject.CurrentObjState.IRTemp.ToString("F1", CultureInfo.InvariantCulture) + "°C";
+                    nonComplianceLog.ToolUsed = _infraredTool;
+                    break;
+
+                case Tools.ProbeThermometer:
+                    nonComplianceLog.Reading = inspectableObject.CurrentObjState.ProbeTemp.ToString("F1", CultureInfo.InvariantCulture) + "°C";
+                    nonComplianceLog.ToolUsed = _probeTool;
+                    break;
+
+                default: 
+                    nonComplianceLog.ToolUsed = _visualTool;
+
+                    //This could be changed to an empty string and leave the responsibility of displaying the correct message to the UI
+                    nonComplianceLog.Reading = " -- ";
+                    break;
+            };
+
+            //Add the NonComplianceLog to the dictionary
+            AddLogToDictionary(inspectableObject.Location, nonComplianceLog);
+
+            _saveSupp.SaveNonComplianceLog();
+        }
+
+
+        /// <summary>
+        ///     This method will add a non-compliance log to the dictionary.
+        ///     It will ensure that no identical logs are added to the list. 
+        /// </summary>
+        /// <param name="nonComplianceLog">The log to be added to the dictionary</param>
+        /// <param name="locationID">The location of the object where the log is created</param>
+        private void AddLogToDictionary(string locationID, NonComplianceLog nonComplianceLog)
+        {
+            //Check if the item is already in the dictionary and add to the list if the key already exists
+            if (NonComplianceLogs.ContainsKey(locationID))
+            {
+                //Ensure the list has no duplicate items 
+                if (NonComplianceLogs[locationID].Contains(nonComplianceLog))
+                {
+                    //Notify that the log already exists
+                    Debug.Log("NonComplianceLog already exists");
+                    return; 
+                }
+                else
+                {
+                    NonComplianceLogs[locationID].Add(nonComplianceLog);
+                }   
+            }
+            else
+            {
+                //Create a new list if the key does not exist
+                NonComplianceLogs.Add(locationID, new List<NonComplianceLog>());
+                NonComplianceLogs[locationID].Add(nonComplianceLog);
+            }
+
+            NonComplianceCount++;
+            Debug.Log("NON COMPLIANCE LOG ADDED TO DICTIONARY" + NonComplianceCount);
+        }
+
+        /// <summary>
+        ///     This method will remove a log from the dictionary and decrement the NonComplianceCount
+        ///     This method is called from the <see cref="InspectionWindow"/> when the user clicks the remove button
+        ///     
+        ///     Note: This method is testable in the noncomplianceManagerTests.cs   
+        /// </summary>
+        /// <param name="key">The name of the POI the object is under</param>
+        /// <param name="log">The log we wish to remove</param>
+        public void RemoveLogFromDictionary(string key, NonComplianceLog log)
+        {
+            //using the key, remove the log from the list
+            NonComplianceLogs[key].Remove(log);
+            NonComplianceCount--;
+            _saveSupp.SaveNonComplianceLog();
+
+            // If location key has no more logs, delete that key
+            if (NonComplianceLogs[key].Count == 0) {
+                NonComplianceLogs.Remove(key);
+            }
+        }
+
+    }
+
+
+    /// <summary>
+    ///  Struct to hold the data for the NonComplianceLog
+    ///  Note: Nullable is used to allow for the photo to be null
+    /// </summary>
+    public struct NonComplianceLog
+    {
+        public string Item;
+        public string ToolUsed;
+        public string Reading;
+    }
+}
+*/

@@ -1,0 +1,98 @@
+.ToastContainer {
+    min-width: 462px;
+    max-width: 1300px;
+    align-self: center;
+    opacity: 0;
+    height: 80px;
+    border-radius: 40px;
+    padding: 10px 60px 10px 10px;
+    background-color: rgba(6, 113, 224, 0.9);
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    left: 4.7%;
+}
+
+.TemplateContainer {
+    position: absolute;
+    top: 40%;
+    left: 12%;
+}
+
+.Static {
+    opacity: 1;
+}
+
+.FadeIn {
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    opacity: 1;
+}
+
+.FadeOut {
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    opacity: 0;
+}
+
+.ToastLabel {
+    font-size: 22px;
+    color: white;
+    -unity-text-align: middle-left;
+    height: 29px;
+    top: 11px;
+}
+
+.FadeOut1s {
+    transition-duration: 2s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    opacity: 0;
+}
+
+.FadeIn1s {
+    transition-duration: 2s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    opacity: 1;
+}
+
+.BorderThin {
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.BorderThick {
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.GreyToast {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 20px;
+    min-width: 0;
+    opacity: 1;
+    margin-top: 0;
+    align-self: center;
+    justify-content: flex-start;
+    margin-bottom: 60px;
+    background-color: rgb(179, 179, 179);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    left: auto;
+    top: 50px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+}

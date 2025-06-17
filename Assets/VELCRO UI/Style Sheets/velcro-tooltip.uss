@@ -1,0 +1,41 @@
+.tooltip {
+    min-width: 267px;
+    min-height: 92px;
+    max-width: 1000px;
+    position: absolute;
+    transition-property: opacity;
+    color: var(--tooltip-text-colour);
+    opacity: 0;
+}
+
+.tooltip-top {
+    background-image: var(--tooltip-top);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 18px;
+    padding-bottom: 4px;
+}
+
+.tooltip-bottom {
+    background-image: var(--tooltip-bottom);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 18px;
+}
+
+.tooltip-left {
+    background-image: var(--tooltip-left);
+    padding-left: 20px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tooltip-right {
+    background-image: var(--tooltip-right);
+    padding-left: 4px;
+    padding-right: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
