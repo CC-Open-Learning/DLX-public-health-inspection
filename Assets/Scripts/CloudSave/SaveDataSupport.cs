@@ -70,6 +70,7 @@ namespace VARLab.PublicHealth
         /// <returns></returns>
         public void Initialize()
         {
+            CloudSave?.Initialize();
             OnInitialize?.Invoke();
         }
 

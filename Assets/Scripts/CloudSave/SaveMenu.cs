@@ -98,16 +98,51 @@ namespace VARLab.PublicHealth
         /// <returns></returns>
         private IEnumerator WaitForSaveSystem()
         {
-            const float TIMEOUT = 30f;
+            const float TIMEOUT = 8f;
+            float timer = 0f;
             _hasLoaded = false;
 
-            SaveDataSupport.Singleton.CloudSave.Load();
-
-            for (float t = 0f; t <= TIMEOUT; t += Time.deltaTime)
+            // i don't think we need the cast but its a good idea to check if the type is correct
+            var cloudSaving = SaveDataSupport.Singleton.CloudSave as CloudSaving;
+            if (cloudSaving == null)
             {
-                yield return new WaitUntil(() => SaveDataSupport.Singleton.CloudSave.HasLoaded);
-                _hasLoaded = SaveDataSupport.Singleton.CloudSave.HasLoaded;
-                break;
+                Debug.LogError("[SaveMenu] CloudSave is not of type CloudSaving.");
+                yield break;
+            }
+
+            // Wait for CloudSave to finish initializing
+            // This is a blocking call that will wait until the CloudSave system is initialized
+            // this was done with waitUntil function but changed because the sim wasn't loading earlier
+            // this change might be useless and is a better idea to rever to using waitUntil since 
+            // its native to unity. However, I don't personally care to make it effecient as of now
+            while (!cloudSaving.IsInitialized && timer < TIMEOUT)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            if (!cloudSaving.IsInitialized)
+            {
+                Debug.LogWarning("[SaveMenu] CloudSave initialization timed out.");
+                yield break;
+            }
+
+            cloudSaving.Load();
+
+            timer = 0f;
+            while (!cloudSaving.HasLoaded && timer < TIMEOUT)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            if (!cloudSaving.HasLoaded)
+            {
+                Debug.LogWarning("[SaveMenu] WaitForSaveSystem timed out after 8 seconds.");
+            }
+            else
+            {
+                _hasLoaded = true;
             }
         }
 

@@ -15,6 +15,7 @@ namespace VARLab.PublicHealth
         public bool? LoadSuccess { get; set; }
 
         public bool HasLoaded { get; set; }
+        public bool IsInitialized { get; }
 
         public string LoadData { get; set; }
     }

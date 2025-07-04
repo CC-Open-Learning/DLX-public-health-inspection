@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VARLab.CloudSave;
-using static VARLab.CloudSave.AzureSaveSystem;
+using VARLab.PublicHealth;
 
 namespace VARLab.PublicHealth
 {
@@ -16,6 +16,7 @@ namespace VARLab.PublicHealth
 
         [SerializeField] public ICloudSaveSystem _saveSystem;
         [SerializeField] private AzureSaveSystem _azureSaveSystem;
+        [SerializeField] private LocalSaveSystem _localSaveSystem;
 
         private string _fileName;
 
@@ -37,6 +38,8 @@ namespace VARLab.PublicHealth
 
         private bool _requestDone = false;
 
+        public bool IsInitialized { get; private set; } = false;
+
         public void Start()
         {
             //start save background loop in start
@@ -44,11 +47,11 @@ namespace VARLab.PublicHealth
         }
 
         /// <summary>
-        /// This is the event listener to <see cref="AzureSaveSystem.RequestCompleted"/> matching the delegate in the class
+        /// This is the event listener matching the delegate in both Azure and Local systems
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void RequestCompletedEventHandler(object sender, RequestCompletedEventArgs args)
+        public void RequestCompletedEventHandler(object sender, object args)
         {
             //this is the listener currently has no need of the sent information just sets a flag saying action is done
             _requestDone = true;
@@ -103,11 +106,23 @@ namespace VARLab.PublicHealth
         /// </summary>
         public void Load()
         {
+            //idk if this is needed ,might be worth to remove later on if it causes issues, this is to ensure
+            //that the system is initialized before trying to load
+            if (!IsInitialized)
+            {
+                Debug.LogWarning("[CloudSaving] Tried to Load before initialization was complete.");
+                return;
+            }
             StartCoroutine(_Load());
         }
 
         private IEnumerator _Load()
         {
+            if (_serializer == null)
+            {
+                Debug.LogError("[CloudSaving] Serializer is not initialized. Did you call Initialize() and wait for it to complete before calling Load()?");
+                yield break;
+            }
             _load = _saveSystem.Load(_filePath);
 
             yield return _load.Routine;
@@ -144,26 +159,60 @@ namespace VARLab.PublicHealth
         /// </summary>
         public void Initialize()
         {
-            if (_saveSystem == null && _azureSaveSystem != null)
-            {
-                _saveSystem = _azureSaveSystem;
-            }
-            //setup the event listener in awake
-            if (_saveSystem is AzureSaveSystem)
-            {
-                ((AzureSaveSystem)_saveSystem).RequestCompleted += RequestCompletedEventHandler;
-            }
+            StartCoroutine(SelectSaveSystem());
+        }
 
-            HasLoaded = false;
-            _serializer = new JsonCloudSerializer();
-            LoadSuccess = null;
+        private IEnumerator SelectSaveSystem()
+        {
+            Debug.Log("[CloudSaving] Starting SelectSaveSystem...");
+            
 #if UNITY_WEBGL && !UNITY_EDITOR
-             _fileName = ScormIntegrator.LearnerId;
+            _fileName = ScormIntegrator.LearnerId;
 #else
             _fileName = SystemInfo.deviceUniqueIdentifier;
 #endif
-
             _filePath = "publichealthinspection/" + _fileName + ".txt";
+            
+            Debug.Log($"[CloudSaving] File path: {_filePath}");
+
+            bool useAzure = false;
+
+            if (_azureSaveSystem != null)
+            {
+                Debug.Log("[CloudSaving] Attempting Azure authorization...");
+                yield return StartCoroutine(_azureSaveSystem.AuthorizeRequest());
+                useAzure = _azureSaveSystem.IsAuthorized;
+            }
+
+            if (useAzure)
+            {
+                SetupAzureSystem();
+            }
+            else
+            {
+                SetupLocalSystem(_azureSaveSystem == null ? "Azure not assigned" : "Azure authorization failed");
+            }
+
+            // Complete initialization
+            HasLoaded = false;
+            _serializer = new JsonCloudSerializer();
+            LoadSuccess = null;
+            IsInitialized = true;
+            Debug.Log("[CloudSaving] Initialization complete!");
+        }
+
+        private void SetupAzureSystem()
+        {
+            _saveSystem = _azureSaveSystem;
+            Debug.Log("[CloudSaving] Using Azure Save System");
+            _azureSaveSystem.RequestCompleted += (sender, args) => RequestCompletedEventHandler(sender, args);
+        }
+
+        private void SetupLocalSystem(string reason)
+        {
+            _saveSystem = _localSaveSystem;
+            Debug.LogWarning($"[CloudSaving] Using Local Save System ({reason})");
+            _localSaveSystem.RequestCompleted += (sender, args) => RequestCompletedEventHandler(sender, args);
         }
     }
 }
